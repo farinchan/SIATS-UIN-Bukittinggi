@@ -216,6 +216,7 @@
                     'orderable': false
                 }]
             });
+            $('#tabel_tracer').DataTable();
 
             $('#tambah_tahun').submit(function(e) {
                 e.preventDefault();
@@ -461,6 +462,38 @@
                 e.preventDefault();
                 $.ajax({
                     url: '<?php echo base_url('admin/ModulAlumni/importalumni') ?>',
+                    type: 'POST',
+                    data: new FormData(this),
+                    dataType: 'JSON',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('#spinner').show();
+                        $('#submit').hide();
+                    },
+                    complete: function() {
+                        $('#spinner').hide();
+                        $('#submit').show();
+                    },
+                    success: function(data, xhr) {
+                        swal(data)
+                            .then((value) => {
+                                location.reload();
+                            });
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.status)
+                        console.log(xhr.responseText);
+                        alert("Error Kode : " + xhr.status + "; Ada NISN yang duplicate antara tabel alumni yang di database dan table di file excle");
+                    }
+                });
+            });
+
+            $('#excel_tracer').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '<?php echo base_url('admin/ModulAlumni/importTracer') ?>',
                     type: 'POST',
                     data: new FormData(this),
                     dataType: 'JSON',

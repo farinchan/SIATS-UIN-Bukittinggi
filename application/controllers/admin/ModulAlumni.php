@@ -709,6 +709,22 @@ class ModulAlumni extends CI_Controller
         $this->load->view('admin/modulalumni/modulalumni.php', $content, FALSE);
     }
 
+    public function tracer()
+    {
+
+        $this->session->set_flashdata('location', "tracer");
+
+        $data = [
+            'tracer' => $this->Model_Alumni->getTracerAll()->result()
+        ];
+
+        $content = array(
+            'content' => $this->load->view('admin/modulalumni/tracer.php', $data, TRUE)
+        );
+
+        $this->load->view('admin/modulalumni/modulalumni.php', $content, FALSE);
+    }
+
     public function listalumni_acc()
     {
 
@@ -799,6 +815,52 @@ class ModulAlumni extends CI_Controller
 
             $this->load->view('admin/modulalumni/partisi_menu.php', $data, TRUE);
             $this->load->view('admin/modulalumni/modulalumni.php', $content, FALSE);
+        }
+    }
+
+    //import data alumni
+    public function importTracer()
+    {
+
+        require_once(APPPATH . 'libraries/Excel/vendor/autoload.php');
+
+        $file_mimes = array('application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        if (isset($_FILES['excel']['name']) && in_array($_FILES['excel']['type'], $file_mimes)) {
+
+            $arr_file = explode('.', $_FILES['excel']['name']);
+            $extension = end($arr_file);
+
+            if ('csv' == $extension) {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+
+            $spreadsheet = $reader->load($_FILES['excel']['tmp_name']);
+
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+
+            for ($i = 1; $i < count($sheetData); $i++) {
+                if ($sheetData[$i]['1'] != null || $sheetData[$i]['1'] != '') {
+                    $data = array(
+                        'nisn' => preg_replace('/\s+/', '', $sheetData[$i]['1']),
+                        'p1' => $sheetData[$i]['2'],
+                        'p2' => $sheetData[$i]['3'],
+                        'p3' => $sheetData[$i]['4'],
+                        'p4' => $sheetData[$i]['5'],
+                        'p5' => $sheetData[$i]['6'],
+                        'p6' => $sheetData[$i]['7'],
+    
+                    );
+                    $this->Model_Alumni->input_tracer($data);
+                }
+            }
+
+            echo json_encode('Berhasil Import Data');
+        } else {
+
+            echo json_encode('Ekstensi File Salah (harus .xlsx)');
         }
     }
 

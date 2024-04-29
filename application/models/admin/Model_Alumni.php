@@ -199,6 +199,17 @@ class Model_Alumni extends CI_Model{
         $this->db->where('nisn', $nisn);
         return $this->db->get('tracer_univ');
     }
+    public function getTracerAll(){
+        $this->db->select('*');
+        $this->db->from('tracer_univ');
+        $this->db->join('alumni', 'tracer_univ.nisn = alumni.nisn', 'inner');
+        $this->db->order_by('tracer_univ.nisn', 'ASC');
+        return $this->db->get();
+    }
+
+    public function input_tracer($data){
+        $this->db->insert('tracer_univ', $data);
+    }
 
     public function tracer_if_exist($nisn)
     {
