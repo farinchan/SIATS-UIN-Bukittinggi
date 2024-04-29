@@ -141,7 +141,8 @@ class ModulAlumni extends CI_Controller
         $this->session->set_flashdata('location', "Data Alumni");
 
         $data = array(
-            'tahun_lulus' => $this->Model_Alumni->getTahunlulus()->result()
+            'tahun_lulus' => $this->Model_Alumni->getTahunlulus()->result(),
+            'prodi' => $this->Model_Setting->getprodi()
         );
 
         $content = array(
@@ -155,11 +156,12 @@ class ModulAlumni extends CI_Controller
     {
         $tracer = (int)$this->input->get('tracer');
         $lulus = (int)$this->input->get('lulus');
+        $prodi = (int)$this->input->get('prodi');
 
 
         // echo json_encode($tracer);
         
-        $list = $this->Model_Alumni->getlistalumni($tracer, $lulus);
+        $list = $this->Model_Alumni->getlistalumni($tracer, $lulus, $prodi);
         $data = array();
         $no = $_POST['start'];
         
@@ -191,7 +193,7 @@ class ModulAlumni extends CI_Controller
 
             'draw' => $_POST['draw'],
             'recordsTotal' => $this->Model_Alumni->count_all_alumni(),
-            'recordsFiltered' => $this->Model_Alumni->count_filtered_alumni($tracer, $lulus),
+            'recordsFiltered' => $this->Model_Alumni->count_filtered_alumni($tracer, $lulus, $prodi),
             'data' => $data,
             'search' => $_POST['search']['value']
 
@@ -242,9 +244,11 @@ class ModulAlumni extends CI_Controller
 
         $tracer = (int)$this->input->get('tracer');
         $lulus = (int)$this->input->get('lulus');
+        $prodi = (int)$this->input->get('prodi');
+
 
         $data = array(
-            'alumni' => $this->Model_Alumni->getAlumniAktif($tracer, $lulus),
+            'alumni' => $this->Model_Alumni->getAlumniAktif($tracer, $lulus, $prodi),
             'tanggal_sekarang' => format_indo(date('Y-m-d'))
         );
 
@@ -835,6 +839,7 @@ class ModulAlumni extends CI_Controller
                     'detail_alamat' => $sheetData[$i]['7'],
                     'email' => $sheetData[$i]['8'],
                     'password' => password_hash(preg_replace('/\s+/', '', $sheetData[$i]['9']), PASSWORD_DEFAULT),
+                    'kode_prodi' => $sheetData[$i]['10'],
                     'waktu_join' => date('Y-m-d H:i:s'),
                     'status_akun' => 'Y'
 

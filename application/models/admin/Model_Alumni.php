@@ -60,7 +60,7 @@ class Model_Alumni extends CI_Model{
         $this->db->delete('tahun_lulus');
     }
 
-    public function get_listalumni_query($isi_tracer, $tahun_lulus){
+    public function get_listalumni_query($isi_tracer, $tahun_lulus , $kode_prodi){
         $coloumn_order = array('nisn', 'nama_alumni', 'tahun_lulus', 'status_alumni', 'detail_status', null);
         $coloumn_search = array('nisn', 'nama_alumni', 'tahun_lulus', 'status_alumni', 'detail_status');
         $order = array('alumni.nisn'=>'DESC');
@@ -71,13 +71,17 @@ class Model_Alumni extends CI_Model{
 
 
         if ($isi_tracer == 1) {
-            $this->db->join('pekerjaan', 'alumni.nisn = pekerjaan.nisn', 'inner');
+            $this->db->join('tracer_univ', 'alumni.nisn = tracer_univ.nisn', 'inner');
         }
 
         $this->db->where('status_akun', "Y");
 
         if ($tahun_lulus != 0) {
             $this->db->where('tahun_lulus', $tahun_lulus);
+        }
+
+        if ($kode_prodi != 0) {
+            $this->db->where('alumni.kode_prodi', $kode_prodi);     
         }
 
         $i = 0;
@@ -120,9 +124,9 @@ class Model_Alumni extends CI_Model{
 
     }
 
-    public function getlistalumni($isi_tracer, $tahun_lulus){
+    public function getlistalumni($isi_tracer, $tahun_lulus, $kode_prodi){
 
-        $this->get_listalumni_query($isi_tracer, $tahun_lulus);
+        $this->get_listalumni_query($isi_tracer, $tahun_lulus, $kode_prodi);
         if($_POST['length'] != -1){
 
             $this->db->limit($_POST['length'], $_POST['start']);
@@ -134,9 +138,9 @@ class Model_Alumni extends CI_Model{
     }
 
 
-    public function count_filtered_alumni($tracer, $lulus){
+    public function count_filtered_alumni($tracer, $lulus, $kode_prodi){
 
-        $this->get_listalumni_query($tracer, $lulus);
+        $this->get_listalumni_query($tracer, $lulus, $kode_prodi);
         return $this->db->get()->num_rows();
 
     }
@@ -155,10 +159,10 @@ class Model_Alumni extends CI_Model{
         return $this->db->get()->result();
     }
     public function alumni_tracer_filter($kode_prodi, $angkatan){
-        $this->db->select("pekerjaan.nisn");
-        $this->db->from('pekerjaan');
-        $this->db->where("SUBSTRING(pekerjaan.nisn, 1, 2) = $kode_prodi");
-        $this->db->where("SUBSTRING(pekerjaan.nisn, 3, 2) = $angkatan");
+        $this->db->select("tracer_univ.nisn");
+        $this->db->from('tracer_univ');
+        $this->db->where("SUBSTRING(tracer_univ.nisn, 1, 2) = $kode_prodi");
+        $this->db->where("SUBSTRING(tracer_univ.nisn, 3, 2) = $angkatan");
         return $this->db->get()->num_rows();
     }
 
@@ -193,15 +197,15 @@ class Model_Alumni extends CI_Model{
 
     public function getTracerAlumni($nisn){
         $this->db->where('nisn', $nisn);
-        return $this->db->get('pekerjaan');
+        return $this->db->get('tracer_univ');
     }
 
     public function tracer_if_exist($nisn)
     {
-        // return $this->db->get_where('pekerjaan', ['nisn' => $nisn])->num_rows();
+        // return $this->db->get_where('tracer_univ', ['nisn' => $nisn])->num_rows();
         $this->db->where('nisn', $nisn);
         $this->db->limit(1);
-        $query = $this->db->get('pekerjaan');
+        $query = $this->db->get('tracer_univ');
         if ($query->num_rows() > 0) {
             return true;
         } else {
@@ -225,20 +229,24 @@ class Model_Alumni extends CI_Model{
         return $this->db->get('alumni')->result();
     }
 
-    public function getAlumniAktif($isi_tracer, $tahun_lulus){
+    public function getAlumniAktif($isi_tracer, $tahun_lulus, $kode_prodi){
         // return $this->db->where('status_akun', "Y")->limit(10)->get("alumni");
 
         $this->db->select('*');
         $this->db->from('alumni');
 
         if ($isi_tracer == 1) {
-            $this->db->join('pekerjaan', 'alumni.nisn = pekerjaan.nisn', 'inner');
+            $this->db->join('tracer_univ', 'alumni.nisn = tracer_univ.nisn', 'inner');
         }
 
         $this->db->where('status_akun', "Y");
 
         if ($tahun_lulus != 0) {
             $this->db->where('tahun_lulus', $tahun_lulus);
+        }
+
+        if ($kode_prodi != 0) {
+            $this->db->where('alumni.kode_prodi', $kode_prodi);     
         }
 
         $this->db->order_by('alumni.nisn', 'ASC');
@@ -421,9 +429,6 @@ class Model_Alumni extends CI_Model{
         $this->db->where('nisn', $nisn);
         return $this->db->get('riwayat_pekerjaan');
     }
-
-    
-   
 
     public function getRiwayatPendidikan($nisn){
         $this->db->where('nisn', $nisn);

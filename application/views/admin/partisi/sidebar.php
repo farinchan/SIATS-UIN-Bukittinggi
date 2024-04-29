@@ -106,7 +106,7 @@
                     </li>
 
 
-                    <?php if ($this->session->flashdata('location') == "modul alumni" || $this->session->flashdata('location') == "Tahun Lulus" || $this->session->flashdata('location') == "Tambah Tahun Lulus" || $this->session->flashdata('location') == "Data Alumni" || $this->session->flashdata('location') == "Lihat Alumni" || $this->session->flashdata('location') == "Acc Alumni" || $this->session->flashdata('location') == "Tambah Alumni") { ?>
+                    <?php if ($this->session->flashdata('location') == "modul alumni" || $this->session->flashdata('location') == "Tahun Lulus" || $this->session->flashdata('location') == "Tambah Tahun Lulus" || $this->session->flashdata('location') == "Data Alumni" || $this->session->flashdata('location') == "Lihat Alumni" || $this->session->flashdata('location') == "Acc Alumni" || $this->session->flashdata('location') == "Tambah Alumni" || $this->session->flashdata('location') == "tracer") { ?>
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                             <?php } else { ?>
@@ -165,6 +165,16 @@
                                             <?php if ($total_alumni_acc != 0) { ?>
                                                 <span class="badge badge-info right"><?php echo $total_alumni_acc; ?></span>
                                             <?php } ?>
+                                            </a>
+                                </li>
+                                <li class="nav-item">
+                                    <?php if ($this->session->flashdata('location') == "tracer") { ?>
+                                        <a href="<?php echo base_url('admin/ModulAlumni/tracer') ?>" class="nav-link active">
+                                        <?php } else { ?>
+                                            <a href="<?php echo base_url('admin/ModulAlumni/tracer') ?>" class="nav-link">
+                                            <?php } ?>
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Tracer Study </p>
                                             </a>
                                 </li>
                             </ul>

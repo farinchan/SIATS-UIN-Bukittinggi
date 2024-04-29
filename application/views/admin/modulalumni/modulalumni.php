@@ -100,9 +100,11 @@
     <script>
         var isi_tracer = document.getElementById("isi_tracer");
         var tahun_lulus = document.getElementById("tahun_lulus");
+        var kode_prodi = document.getElementById("kode_prodi");
 
         var tracer = 0;
         var lulus = 0;
+        var prodi = 0;
 
         var tombolcetaklaporan = document.getElementById("tombolcetaklaporan");
 
@@ -114,7 +116,7 @@
                 } else {
                     tracer = 0
                 }
-                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus
+                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi
                 console.log("Tombol = " + tombolcetaklaporan.href);
                 UpdateListAlumni()
             });
@@ -129,7 +131,20 @@
                 } else {
                     lulus = tahun_lulus.value
                 }
-                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus
+                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus+ "&prodi=" + prodi
+                UpdateListAlumni()
+            });
+        }
+
+        if (kode_prodi !== null) {
+            kode_prodi.addEventListener('change', function() {
+                console.log(kode_prodi.value);
+                if (kode_prodi.value == "Semua") {
+                    prodi = 0
+                } else {
+                    prodi = kode_prodi.value
+                }
+                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus+ "&prodi=" + prodi
                 UpdateListAlumni()
             });
         }
@@ -138,7 +153,7 @@
 
 
         function UpdateListAlumni() {
-            console.log("<?php echo base_url('admin/ModulAlumni/listalumni?tracer=') ?>" + tracer + "&lulus=" + lulus);
+            console.log("<?php echo base_url('admin/ModulAlumni/listalumni?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi);
             $('#list_alumni').DataTable().destroy();
             var table_list_alumni = $('#list_alumni').DataTable({
                 searching: false,
@@ -147,7 +162,7 @@
                 "responsive": true,
                 "order": [],
                 "ajax": {
-                    'url': '<?php echo base_url('admin/ModulAlumni/listalumni?tracer=') ?>' + tracer + "&lulus=" + lulus,
+                    'url': '<?php echo base_url('admin/ModulAlumni/listalumni?tracer=') ?>' + tracer + "&lulus=" + lulus + "&prodi=" + prodi,
                     'type': 'POST'
                 },
                 "columnDefs": [{
@@ -163,7 +178,7 @@
         $(document).ready(function() {
 
             if (tombolcetaklaporan !== null) {
-                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus
+                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi
             }
 
             $('#spinner').hide();
@@ -467,6 +482,8 @@
                             });
                     },
                     error: function(xhr, status, error) {
+                        console.log(xhr.status)
+                        console.log(xhr.responseText);
                         alert("Error Kode : " + xhr.status + "; Ada NISN yang duplicate antara tabel alumni yang di database dan table di file excle");
                     }
                 });

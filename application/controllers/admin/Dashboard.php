@@ -45,7 +45,7 @@ class Dashboard extends CI_Controller
             'totaltopik' => $this->Model_Dashboard->getTopik()->num_rows(),
             'totaldonasi' => $this->Model_Dashboard->getDonasi()->num_rows(),
             'transaksi' => $this->Model_Dashboard->getTransaksi()->result(),
-            "alumni" => $this->Model_Alumni->getAlumniAktif(0, 0),
+            "alumni" => $this->Model_Alumni->getAlumniAktif(0, 0, 0),
             "lulus" => $this->Model_register->get_tahunlulus()->result()
         );
 
@@ -109,7 +109,7 @@ class Dashboard extends CI_Controller
     {
         header('Content-Type: application/json');
 
-        $result = $this->Model_Alumni->getAlumniAktif(0, 0);
+        $result = $this->Model_Alumni->getAlumniAktif(0, 0 , 0);
         $tahun_lulus = $this->Model_register->get_tahunlulus()->result();
 
         $filter = $this->input->get('filter');
