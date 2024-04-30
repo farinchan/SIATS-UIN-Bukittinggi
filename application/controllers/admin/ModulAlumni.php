@@ -818,7 +818,7 @@ class ModulAlumni extends CI_Controller
         }
     }
 
-    //import data alumni
+    //import data Tracer
     public function importTracer()
     {
 
@@ -863,6 +863,8 @@ class ModulAlumni extends CI_Controller
             echo json_encode('Ekstensi File Salah (harus .xlsx)');
         }
     }
+
+    
 
 
     //import data alumni

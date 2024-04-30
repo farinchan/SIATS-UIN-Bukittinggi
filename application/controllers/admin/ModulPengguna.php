@@ -31,7 +31,7 @@ class ModulPengguna extends CI_Controller
 
         $this->load->view('admin/partisi/sidebar.php', $data, TRUE);
 
-        
+
         $datanav = array(
             'log_update_alumni' => $this->Model_Alumni->getlogupdatealumniLimit(),
             'log_update_alumni_total' => $this->Model_Alumni->logupdatealumnitotal(),
@@ -45,6 +45,7 @@ class ModulPengguna extends CI_Controller
         $this->session->set_flashdata('location', "penilaian_pengguna");
 
         $data = array(
+            'penilaian_pengguna' => $this->Model_Penilaian->getall_penilaian(),
             'totalalumni' => $this->Model_Dashboard->getAlumni()->num_rows(),
             'totalberita' => $this->Model_Dashboard->getBerita()->num_rows(),
             'totaltopik' => $this->Model_Dashboard->getTopik()->num_rows(),
@@ -84,7 +85,7 @@ class ModulPengguna extends CI_Controller
 
             'draw' => $_POST['draw'],
             'recordsTotal' => $this->Model_Penilaian->count_all_penilaian(),
-            'recordsFiltered' => 10,
+            'recordsFiltered' => $this->Model_Penilaian->count_all_penilaian(),
             'data' => $data,
             'search' => $_POST['search']['value']
 
@@ -108,6 +109,10 @@ class ModulPengguna extends CI_Controller
         } else {
 
             $penilaian_pengguna = $this->Model_Penilaian->get_penilaian($id);
+            
+            if ($penilaian_pengguna->alumni_list == null) {
+                $penilaian_pengguna->alumni_list = "[]";
+            }
 
             $listAlumni = json_decode($penilaian_pengguna->alumni_list);
             $alumni = array();
@@ -186,5 +191,63 @@ class ModulPengguna extends CI_Controller
         }
     }
 
-  
+    //import data Tracer
+    public function importPenilaiain()
+    {
+
+        require_once(APPPATH . 'libraries/Excel/vendor/autoload.php');
+
+        $file_mimes = array('application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
+        if (isset($_FILES['excel']['name']) && in_array($_FILES['excel']['type'], $file_mimes)) {
+
+            $arr_file = explode('.', $_FILES['excel']['name']);
+            $extension = end($arr_file);
+
+            if ('csv' == $extension) {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+
+            $spreadsheet = $reader->load($_FILES['excel']['tmp_name']);
+
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+
+            for ($i = 1; $i < count($sheetData); $i++) {
+                if ($sheetData[$i]['1'] != null || $sheetData[$i]['1'] != '') {
+                    if ($sheetData[$i]['1'] != null || $sheetData[$i]['1'] != '') {
+
+                        $data = array(
+                            'nama' => $sheetData[$i]['1'],
+                            'jabatan' => $sheetData[$i]['2'],
+                            'instansi_lembaga' => $sheetData[$i]['3'],
+                            'alamat_lembaga' => $sheetData[$i]['4'],
+                            'no_telp' => $sheetData[$i]['5'],
+                            'no_fax' => $sheetData[$i]['6'],
+                            'email' => $sheetData[$i]['7'],
+                            'pertanyaan1' => $sheetData[$i]['8'],
+                            'pertanyaan2' => $sheetData[$i]['9'],
+                            'pertanyaan3' => $sheetData[$i]['10'],
+                            'pertanyaan4' => $sheetData[$i]['11'],
+                            'pertanyaan5' => $sheetData[$i]['12'],
+                            'pertanyaan6' => $sheetData[$i]['13'],
+                            'pertanyaan7' => $sheetData[$i]['14'],
+                            'pertanyaan8' => $sheetData[$i]['15'],
+                            'pertanyaan9' => $sheetData[$i]['16'],
+                            'pertanyaan10' => $sheetData[$i]['17'],
+                            'created_at' => $sheetData[$i]['18'],
+
+                        );
+                        $this->Model_Penilaian->insert_penilaian($data);
+                    }
+                }
+            }
+
+            echo json_encode('Berhasil Import Data');
+        } else {
+
+            echo json_encode('Ekstensi File Salah (harus .xlsx)');
+        }
+    }
 }

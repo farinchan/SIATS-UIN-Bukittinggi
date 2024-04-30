@@ -115,46 +115,99 @@
 
                     </div>
 
+
+
                     <div class="card">
 
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Lembaga yang Bapak/Ibu kelola bergerak dalam bidang apa ?</label>
+                                <label>Nama Alumni</label>
                                 <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan1 ?>" readonly>
                             </div>
 
                             <div class="form-group">
-                                <label>Adakah alumni dari Jurusan kami yang bekerja pada lembaga Bapak/Ibu ?</label>
+                                <label>Tahun Lulus Alumni</label>
                                 <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan2 ?>" readonly>
                             </div>
 
                             <div class="form-group">
-                                <label>Bagaimanakah kinerja alumni tersebut menurut Bapak/Ibu ?</label>
+                                <label>Berapa lama Alumni sudah bergabung di Lembaga/Perusahaan yang Bapak/Ibu pimpin? (....... bulan)</label>
                                 <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan3 ?>" readonly>
                             </div>
-                            <div class="form-group">
-                                <label>Bidang yang kurang dikuasai alumni kami adalah</label>
-                                <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan4 ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>Perlukah diadakan mata kuliah – mata kuliah pilihan baru/ ketrampilan/kompetensi tambahan untuk mengantipasi kemajuan di bidang yang Bapak/Ibu kelola ?</label>
-                                <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan5 ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>Tuliskan saran-saran umum Bapak/Ibu demi perbaikan program studi kami yang berkaitan dengan peningkatan kualitas lulusannya</label>
-                                <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan6 ?>" readonly>
-                            </div>
+
 
                             <div class="form-group">
-                                <label>Berikan saran bagi peningkatan kualitas lulusan Program Studi kami supaya lebih dekat dengan kebutuhan/tuntutan dunia kerja (mohon melihat dokumen akademik yang kami sertakan). Bapak/Ibu dapat memanfaatkan halaman sebalik jika space berikut ini kurang</label>
-                                <label>Fasilitas/Laboratorium:</label>
-                                <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan7_1 ?>" readonly>
-                                <label>Kualitas Dosen:</label>
-                                <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan7_2 ?>" readonly>
-                                <label>Kurikulum :</label>
-                                <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan7_3 ?>" readonly>
-                                <label>Kualitas Layanan Administrasi:</label>
-                                <input type="text" class="form-control" value="<?= $data_penilaian->pertanyaan7_4 ?>" readonly>
+                                <label>Bagaimana penilaian kepuasan pengguna lulusan pada aspek di bawah ini?</label><br>
+                                <label>Etika</label>
+                                <input type="text" class="form-control" value="<?php if ($data_penilaian->pertanyaan4 == 4) {
+                                                                                    echo "Sangat Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan4 == 3) {
+                                                                                    echo "Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan4 == 2) {
+                                                                                    echo "Cukup";
+                                                                                } elseif ($data_penilaian->pertanyaan4 == 1) {
+                                                                                    echo "Kurang";
+                                                                                } ?>" readonly>
+                                <label>Keahlian pada Bidang Ilmu</label>
+                                <input type="text" class="form-control" value="<?php if ($data_penilaian->pertanyaan5 == 4) {
+                                                                                    echo "Sangat Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan5 == 3) {
+                                                                                    echo "Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan5 == 2) {
+                                                                                    echo "Cukup";
+                                                                                } elseif ($data_penilaian->pertanyaan5 == 1) {
+                                                                                    echo "Kurang";
+                                                                                } ?>" readonly>
+                                <label>Kemampuan Berbahasa Asing</label>
+                                <input type="text" class="form-control" value="<?php if ($data_penilaian->pertanyaan6 == 4) {
+                                                                                    echo "Sangat Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan6 == 3) {
+                                                                                    echo "Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan6 == 2) {
+                                                                                    echo "Cukup";
+                                                                                } elseif ($data_penilaian->pertanyaan6 == 1) {
+                                                                                    echo "Kurang";
+                                                                                } ?>" readonly>
+                                <label>Penggunaan Teknologi Informasi</label>
+                                <input type="text" class="form-control" value="<?php if ($data_penilaian->pertanyaan7 == 4) {
+                                                                                    echo "Sangat Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan7 == 3) {
+                                                                                    echo "Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan7 == 2) {
+                                                                                    echo "Cukup";
+                                                                                } elseif ($data_penilaian->pertanyaan7 == 1) {
+                                                                                    echo "Kurang";
+                                                                                } ?>" readonly>
+                                <label>Kemampuan Berkomunikasi</label>
+                                <input type="text" class="form-control" value="<?php if ($data_penilaian->pertanyaan8 == 4) {
+                                                                                    echo "Sangat Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan8 == 3) {
+                                                                                    echo "Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan8 == 2) {
+                                                                                    echo "Cukup";
+                                                                                } elseif ($data_penilaian->pertanyaan8 == 1) {
+                                                                                    echo "Kurang";
+                                                                                } ?>" readonly>
+                                <label>Kerjasama</label>
+                                <input type="text" class="form-control" value="<?php if ($data_penilaian->pertanyaan9 == 4) {
+                                                                                    echo "Sangat Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan9 == 3) {
+                                                                                    echo "Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan9 == 2) {
+                                                                                    echo "Cukup";
+                                                                                } elseif ($data_penilaian->pertanyaan9 == 1) {
+                                                                                    echo "Kurang";
+                                                                                } ?>" readonly>
+                                <label>Pengembangan Diri</label>
+                                <input type="text" class="form-control" value="<?php if ($data_penilaian->pertanyaan10 == 4) {
+                                                                                    echo "Sangat Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan10 == 3) {
+                                                                                    echo "Baik";
+                                                                                } elseif ($data_penilaian->pertanyaan10 == 2) {
+                                                                                    echo "Cukup";
+                                                                                } elseif ($data_penilaian->pertanyaan10 == 1) {
+                                                                                    echo "Kurang";
+                                                                                } ?>" readonly>
                             </div>
                         </div>
 

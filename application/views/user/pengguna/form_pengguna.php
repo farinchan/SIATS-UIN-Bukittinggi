@@ -24,35 +24,35 @@
             <div class="card-body">
 
               <div class="mb-3 row">
-                <label  class="col-sm-2 col-form-label">Nama</label>
+                <label class="col-sm-2 col-form-label">Nama</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" required>
                 </div>
               </div>
 
               <div class="mb-3 row">
-                <label  class="col-sm-2 col-form-label">Jabatan</label>
+                <label class="col-sm-2 col-form-label">Jabatan</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan" required>
                 </div>
               </div>
 
               <div class="mb-3 row">
-                <label  class="col-sm-2 col-form-label">Instansi / Lembaga</label>
+                <label class="col-sm-2 col-form-label">Instansi / Lembaga</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="instansi_lembaga" name="instansi_lembaga" placeholder="Instansi/Lembaga" required>
                 </div>
               </div>
 
               <div class="mb-3 row">
-                <label  class="col-sm-2 col-form-label">Alamat Lembaga</label>
+                <label class="col-sm-2 col-form-label">Alamat Lembaga</label>
                 <div class="col-sm-10">
                   <textarea id="alamat_lembaga" class="form-control" name="alamat_lembaga" rows="10" placeholder="Alamat Lembaga, Meliputi RT/RW" required></textarea>
                 </div>
               </div>
 
               <div class="mb-3 row">
-                <label  class="col-sm-2 col-form-label">No. Telepon</label>
+                <label class="col-sm-2 col-form-label">No. Telepon</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No. Telepon" required>
                 </div>
@@ -78,94 +78,214 @@
             <div class="card-body">
               <ol>
                 <li class="mb-3">
-                  <div class="form-group">
-                    <label for="pertanyaan1">Lembaga yang Bapak/Ibu kelola bergerak dalam bidang apa</label>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan1" id="pertanyaan1rb1" value="Pendidikan" checked>
-                      <label class="form-check-label" for="pertanyaan1">
-                        Pendidikan
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan1" id="pertanyaan1rb2" value="Industri" checked>
-                      <label class="form-check-label" for="pertanyaan1">
-                        Industri, sebutkan jenis industrinya <input type="text" class="form-control" name="industri" id="industri">
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan1" id="pertanyaan1rb3" value="Jasa" checked>
-                      <label class="form-check-label" for="pertanyaan1">
-                        Jasa, sebutkan jenis jasanya <input type="text" class="form-control" name="jasa" id="jasa">
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan1" id="pertanyaan1rb4" value="Perdagangan/Bisnis" checked>
-                      <label class="form-check-label" for="pertanyaan1">
-                        Perdagangan/Bisnis
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan1" id="pertanyaan1rb5" value="Pertanian" checked>
-                      <label class="form-check-label" for="pertanyaan1">
-                        Pertanian
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan1" id="pertanyaan1rb6" value="Kebudayaan dan Pariwisata" checked>
-                      <label class="form-check-label" for="pertanyaan1">
-                        Kebudayaan dan Pariwisata
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan1" id="pertanyaan1rb7" value="Lain-lain" checked>
-                      <label class="form-check-label" for="pertanyaan1">
-                        Lain-lain, sebutkan <input type="text" class="form-control" name="lain-lain" id="lain-lain">
-                      </label>
-                    </div>
+                  <label class="mb-3"><b>Identitas Alumni</b></label>
+
+                  <div class="form-group mb-2">
+                    <label for="pertanyaan1">Nama Alumni</label>
+                    <input class="form-control" type="text" name="pertanyaan1" id="pertanyaan1">
                   </div>
-                </li>
-                <li class="mb-3">
-                  <div class="form-group">
-                    <label for="pertanyaan2">Adakah alumni dari Jurusan kami yang bekerja pada lembaga Bapak/Ibu</label>
+                  <div class="form-group mb-2">
+                    <label for="pertanyaan2">Tahun Lulus Alumni</label>
+
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan2" id="pertanyaan2rb1" value="ada">
+                      <input class="form-check-input" type="radio" name="pertanyaan2" id="pertanyaan2rb1" value="2021">
                       <label class="form-check-label" for="pertanyaan2">
-                        ada
-                        Sebutkan jumlahnya : <input type="number" class="form-control" id="ada"> orang
+                        2021
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pertanyaan2" id="pertanyaan2rb2" value="tidak ada">
+                      <input class="form-check-input" type="radio" name="pertanyaan2" id="pertanyaan2rb2" value="2020">
                       <label class="form-check-label" for="pertanyaan2">
-                        Tidak Ada
+                        2020
                       </label>
                     </div>
-                    <div id="rb_pertanyaan2_tidakada"></div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="pertanyaan2" id="pertanyaan2rb3" value="2019">
+                      <label class="form-check-label" for="pertanyaan2">
+                        2019
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="pertanyaan2" id="pertanyaan2rb4" value="ada">
+                      <label class="form-check-label" for="pertanyaan2">
+                        Yang lain : <input type="number" class="form-control" id="pertanyaan2rb4yl">
+                      </label>
+                    </div>
                   </div>
                 </li>
-
-                <div id="rb_pertanyaan2_ada"></div>
 
                 <li class="mb-3">
-                  <div class="form-group">
-                    <label for="pertanyaan1">Tuliskan saran-saran umum Bapak/Ibu demi perbaikan program studi kami yang berkaitan dengan peningkatan kualitas lulusannya.</label>
-                    <textarea class="form-control" rows="7" placeholder="saran-saran umum Bapak/Ibu" name="pertanyaan6" id="pertanyaan6" required></textarea>
+                  <label class="mb-3"><b>Status Pekerjaan Alumni Saat Ini</b></label>
+                  <div class="form-group mb-2">
+                    <label for="pertanyaan3">Berapa lama Alumni sudah bergabung di Lembaga/Perusahaan yang Bapak/Ibu pimpin? (....... bulan)</label>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="pertanyaan3" id="pertanyaan3rb1" value="2021">
+                      <label class="form-check-label" for="pertanyaan3">
+                        < 6 Bulan </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="pertanyaan3" id="pertanyaan3rb2" value="2020">
+                      <label class="form-check-label" for="pertanyaan3">
+                        6 - 18 Bulan
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="pertanyaan3" id="pertanyaan3rb3" value="2019">
+                      <label class="form-check-label" for="pertanyaan3">
+                        > 18 Bulan
+                      </label>
+                    </div>
                   </div>
                 </li>
 
+
+
+
                 <li class="mb-3">
-                  <div class="form-group">
-                    <label for="pertanyaan1">Berikan saran bagi peningkatan kualitas lulusan Program Studi kami supaya lebih dekat dengan kebutuhan/tuntutan dunia kerja (mohon melihat dokumen akademik yang kami sertakan). Bapak/Ibu dapat memanfaatkan halaman sebalik jika space berikut ini kurang</label>
-                    <label for="pertanyaan1">Fasilitas/Laboratorium:</label>
-                    <textarea class="form-control" name="pertanyaan7_1" id="pertanyaan7_1" rows="5" placeholder="Fasilitas/Laboratorium" required></textarea>
-                    <label for="pertanyaan1">Kualitas Dosen:</label>
-                    <textarea class="form-control" name="pertanyaan7_2" id="pertanyaan7_2" rows="5" placeholder="Kualitas Dosen" required></textarea>
-                    <label for="pertanyaan1">Kurikulum :</label>
-                    <textarea class="form-control" name="pertanyaan7_3" id="pertanyaan7_3" rows="5" placeholder="Kurikulum" required></textarea>
-                    <label for="pertanyaan1">Kualitas Layanan Administrasi:</label>
-                    <textarea class="form-control" name="pertanyaan7_4" id="pertanyaan7_4" rows="5" placeholder="Kualitas Layanan Administrasi" required></textarea>
+                  <label class="mb-3"><b>Penilaian Alumni</b></label>
+                  <div class="form-group mb-2">
+                    <span>
+                      <label>Bagaimana penilaian kepuasan pengguna lulusan pada aspek di bawah ini? (Nilai 4 - 1)</label>
+                      Catatan Penilaian: <br>
+                      4 = Sangat Baik <br>
+                      3 = Baik <br>
+                      2 = Cukup <br>
+                      1 = Kurang <br>
+                    </span>
+                    <table>
+                      <thead>
+                        <td style="width: 300px;"></td>
+                        <td style="width: 70px;"> 4</td>
+                        <td style="width: 70px;"> 3</td>
+                        <td style="width: 70px;"> 2</td>
+                        <td style="width: 70px;"> 1</td>
+                      </thead>
+
+                      <tr style="height: 35px;">
+                        <td> <label for="pertanyaan3">Etika</label>
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb1" value="4">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb2" value="3">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb3" value="2">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb4" value="1">
+                        </td>
+                      </tr>
+
+                      <tr style="height: 35px;">
+                        <td> <label for="pertanyaan5">Keahlian pada Bidang Ilmu</label>
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan5" id="pertanyaan5rb1" value="4">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan5" id="pertanyaan5rb2" value="3">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan5" id="pertanyaan5rb3" value="2">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan5" id="pertanyaan5rb4" value="1">
+                        </td>
+                      </tr>
+
+                      <tr style="height: 35px;">
+                        <td> <label for="pertanyaan6">Kemampuan Berbahasa Asing</label>
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan6" id="pertanyaan6rb1" value="4">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan6" id="pertanyaan6rb2" value="3">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan6" id="pertanyaan6rb3" value="2">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan6" id="pertanyaan6rb4" value="1">
+                        </td>
+                      </tr>
+
+                      <tr style="height: 35px;">
+                        <td> <label for="pertanyaan7">Penggunaan Teknologi Informasi</label>
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan7" id="pertanyaan7rb1" value="4">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan7" id="pertanyaan7rb2" value="3">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan7" id="pertanyaan7rb3" value="2">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan7" id="pertanyaan7rb4" value="1">
+                        </td>
+                      </tr>
+
+                      <tr style="height: 35px;">
+                        <td> <label for="pertanyaan8">Kemampuan Berkomunikasi</label>
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan8" id="pertanyaan8rb1" value="4">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan8" id="pertanyaan8rb2" value="3">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan8" id="pertanyaan8rb3" value="2">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan8" id="pertanyaan8rb4" value="1">
+                        </td>
+                      </tr>
+
+                      <tr style="height: 35px;">
+                        <td> <label for="pertanyaan9">Kerjasama</label>
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan9" id="pertanyaan9rb1" value="4">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan9" id="pertanyaan9rb2" value="3">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan9" id="pertanyaan9rb3" value="2">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan9" id="pertanyaan9rb4" value="1">
+                        </td>
+                      </tr>
+
+                      <tr style="height: 35px;">
+                        <td> <label for="pertanyaan10">Pengembangan Diri</label>
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan10" id="pertanyaan10rb1" value="4">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan10" id="pertanyaan10rb2" value="3">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan10" id="pertanyaan10rb3" value="2">
+                        </td>
+                        <td>
+                          <input class="form-check-input" type="radio" name="pertanyaan10" id="pertanyaan10rb4" value="1">
+                        </td>
+                      </tr>
+
+
+                    </table>
                   </div>
                 </li>
+
               </ol>
             </div>
           </div>
@@ -187,7 +307,7 @@
             </div>
           </div>
           <div class="row px-3">
-            <button type="submit"  class="btn btn-primary btn-block mt-3" style="float: right;"><i class="fas fa-paper-plane"></i> Selesai & Kirim <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="spinner"></span></button>
+            <button type="submit" class="btn btn-primary btn-block mt-3" style="float: right;"><i class="fas fa-paper-plane"></i> Selesai & Kirim <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="spinner"></span></button>
           </div>
         </div>
 

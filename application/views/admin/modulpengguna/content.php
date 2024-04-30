@@ -25,10 +25,10 @@
                     <h6>Data Seluruh Penilaian Pengguna</h6>
                 </div>
                 <div class="card-body">
-                    <div class="btn-group mb-3" role="group" aria-label="Basic example">
+                    <!-- <div class="btn-group mb-3" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-default">Import</button>
                         <a href="<?php echo base_url('admin/ModulAlumni/exportalumni') ?>" type="button" class="btn btn-secondary btn-sm">Export</a>
-                    </div>
+                    </div> -->
                     <table class="table table-bordered table-striped" id="list_alumni">
                         <thead>
                             <tr>
@@ -43,6 +43,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $no=1; foreach($penilaian_pengguna as $row) { ?>
+                            <tr>
+                                <td><?php echo $row->nama; ?></td>
+                                <td><?php echo $row->jabatan; ?></td>
+                                <td><?php echo $row->instansi_lembaga; ?></td>
+                                <td><?php echo $row->no_telp; ?></td>
+                                <td><?php echo $row->no_fax; ?></td>
+                                <td><?php echo $row->email; ?></td>
+                                <td><?php echo $row->created_at; ?></td>
+                                <td>
+                                    <a href="<?php echo base_url('admin/ModulPengguna/lihatPenilaian/' . $row->id) ?>" class="btn btn-primary btn-sm">
+                                        <i class="fab fa-wpforms"></i> Detail Penilaian
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

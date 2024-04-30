@@ -88,13 +88,10 @@
         <div class="row">
 
           <div class="col-md-12">
-            <!-- Bar chart -->
-            <div class="card card-primary card-outline">
+            <!-- BAR CHART -->
+            <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title">
-                  <i class="far fa-chart-bar"></i>
-                  Total Alumni Berdasarkan Fakultas
-                </h3>
+                <h3 class="card-title">Bar Chart</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -106,9 +103,11 @@
                 </div>
               </div>
               <div class="card-body">
-                <div id="bar-chart" style="height: 300px;"></div>
+                <div class="chart">
+                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
               </div>
-              <!-- /.card-body-->
+              <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>

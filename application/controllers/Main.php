@@ -41,7 +41,9 @@ class Main extends CI_Controller
 
     function pengguna()
     {
-        $data = [];
+        $data = [
+            "lulus" => $this->Model_register->get_tahunlulus()->result()
+        ];
 
         $this->session->set_flashdata('location', "pengguna");
         $this->load->view('user/pengguna/form_pengguna.php', $data, TRUE);

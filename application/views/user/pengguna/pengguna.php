@@ -51,7 +51,7 @@
                 },
             });
 
-            var list_alumni= "[]"
+            var list_alumni = "[]"
 
             $('#mySelect2').on('change', function() {
                 var hasil = document.getElementById('hasil_pencarian_lulusan');
@@ -96,224 +96,22 @@
 
             });
 
-            const pertanyaan2rb1 = document.getElementById('pertanyaan2rb1');
-            const pertanyaan2rb2 = document.getElementById('pertanyaan2rb2');
-            pertanyaan2rb1.addEventListener('change', UpdatePertanyaan2);
-            pertanyaan2rb2.addEventListener('change', UpdatePertanyaan2);
-
-            function UpdatePertanyaan2() {
-                var rb_pertanyaan2_ada = document.getElementById('rb_pertanyaan2_ada');
-                var rb_pertanyaan2_tidakada = document.getElementById('rb_pertanyaan2_tidakada');
-
-                if (pertanyaan2rb1.checked) {
-                    console.log("ada : " + pertanyaan2rb1.checked);
-                    rb_pertanyaan2_ada.innerHTML = `
-                                        <li class="mb-3">
-                                        <div class="form-group">
-                                        <label for="pertanyaan3">Bagaimanakah kinerja alumni tersebut menurut Bapak/Ibu ?</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan3" id="pertanyaan3rb1" value="Sangat baik">
-                                            <label class="form-check-label" for="pertanyaan3">
-                                            Sangat baik
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan3" id="pertanyaan3rb2" value="Baik">
-                                            <label class="form-check-label" for="pertanyaan3">
-                                            Baik
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan3" id="pertanyaan3rb3" value="Sedang">
-                                            <label class="form-check-label" for="pertanyaan3">
-                                            Sedang
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan3" id="pertanyaan3rb4" value="Jelek">
-                                            <label class="form-check-label" for="pertanyaan3">
-                                            Jelek
-                                            </label>
-                                        </div>
-                                        </div>
-                                    </li>
-    
-                                    <li class="mb-3">
-                                        <div class="form-group">
-                                        <label for="pertanyaan4">Bidang yang kurang dikuasai alumni kami adalah</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb1" value="Komunikasi dan presentasi terutama penggunaan Bahasa Inggris" checked>
-                                            <label class="form-check-label" for="pertanyaan4">
-                                            Komunikasi dan presentasi terutama penggunaan Bahasa Inggris
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb2" value="Komputer atau pemanfaatan IT secara umum" checked>
-                                            <label class="form-check-label" for="pertanyaan4">
-                                            Komputer atau pemanfaatan IT secara umum
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb3" value="Numerik" checked>
-                                            <label class="form-check-label" for="pertanyaan4">
-                                            Numerik
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb4" value="Memimpin (leadership)" checked>
-                                            <label class="form-check-label" for="pertanyaan4">
-                                            Memimpin (leadership)
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb5" value="Mengembangkan pola kerja" checked>
-                                            <label class="form-check-label" for="pertanyaan4">
-                                            Mengembangkan pola kerja
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb6" value="Bekerjasama dalam tim" checked>
-                                            <label class="form-check-label" for="pertanyaan4">
-                                            Bekerjasama dalam tim
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan4" id="pertanyaan4rb7" value="Lainnya" checked>
-                                            <label class="form-check-label" for="pertanyaan4">
-                                            Lainnya, sebutkan
-                                            <input type="text" class="form-control" name="lainnyapertanyaan4" id="lainnyapertanyaan4">
-                                            </label>
-                                        </div>
-                                        </div>
-                                    </li>
-    
-                                    <li class="mb-3">
-                                        <div class="form-group">
-                                        <label for="pertanyaan5">Perlukah diadakan mata kuliah – mata kuliah pilihan baru/ ketrampilan/kompetensi tambahan untuk mengantipasi kemajuan di bidang yang Bapak/Ibu kelola ?</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan5" id="pertanyaan5rb1" value="Perlu" checked>
-                                            <label class="form-check-label" for="pertanyaan5">
-                                            Perlu, sebutkan
-                                            <input type="text" class="form-control" name="perlupertanyaan5" id="perlupertanyaan5">
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan5" id="pertanyaan5rb2" value="Tidak Perlu" checked>
-                                            <label class="form-check-label" for="pertanyaan5">
-                                            Tidak perlu
-                                            </label>
-                                        </div>
-                                        </div>
-                                    </li>
-                                    `;
-                    rb_pertanyaan2_tidakada.innerHTML = ``;
-                } else if (pertanyaan2rb2.checked) {
-                    console.log("Tidak Ada : " + pertanyaan2rb2.checked);
-                    rb_pertanyaan2_tidakada.innerHTML = `
-                                        <label for="pertanyaan2">Jika saat ini tidak ada alumni kami yang bekerja pada lembaga ini, sebutkan alasannya</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan2rb2" id="pertanyaan2rb2p1" value="Tidak ada yang melamar">
-                                            <label class="form-check-label" for="pertanyaan2">
-                                            Tidak ada yang melamar
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan2rb2" id="pertanyaan2rb2p2" value="Kalah bersaing">
-                                            <label class="form-check-label" for="pertanyaan2">
-                                            Kalah bersaing
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="pertanyaan2rb2" id="pertanyaan2rb2p3">
-                                            <label class="form-check-label" for="pertanyaan2">
-                                            Alasan lainnya (tuliskan) <input type="text" class="form-control" name="pertanyaan2rb2p3lain" id="pertanyaan2rb2p3lain">
-                                            </label>
-                                        </div>
-                                    `;
-                    rb_pertanyaan2_ada.innerHTML = ``;
-
-
-                } else {
-                    rb_pertanyaan2_ada.innerHTML = ``;
-                    rb_pertanyaan2_tidakada.innerHTML = ``;
-                }
-            }
-
             $('#spinner').hide();
 
             $('#penilaian_pengguna').submit(function(e) {
                 e.preventDefault();
 
-                var pertanyaan1 = ""
-                if (document.getElementById("pertanyaan1rb1").checked) {
-                    pertanyaan1 = "Pendidikan"
-                } else if (document.getElementById("pertanyaan1rb2").checked) {
-                    pertanyaan1 = "Industri, " + document.getElementById("industri").value
-                } else if (document.getElementById("pertanyaan1rb3").checked) {
-                    pertanyaan1 = "Jasa, " + document.getElementById("jasa").value
-                } else if (document.getElementById("pertanyaan1rb4").checked) {
-                    pertanyaan1 = "Perdagangan/Bisnis"
-                } else if (document.getElementById("pertanyaan1rb5").checked) {
-                    pertanyaan1 = "Pertanian"
-                } else if (document.getElementById("pertanyaan1rb6").checked) {
-                    pertanyaan1 = "Kebudayaan dan Pariwisata"
-                } else if (document.getElementById("pertanyaan1rb7").checked) {
-                    pertanyaan1 = "Lain-lain, " + document.getElementById("lain-lain").value
-                }
-
                 var pertanyaan2 = ""
-                var pertanyaan3 = ""
-                var pertanyaan4 = ""
-                var pertanyaan5 = ""
+
                 if (document.getElementById("pertanyaan2rb1").checked) {
-                    pertanyaan2 = "Ada, " + document.getElementById("ada").value + " Orang"
-
-                    if (document.getElementById("pertanyaan3rb1").checked) {
-                        pertanyaan3 = "Sangat baik"
-                    } else if (document.getElementById("pertanyaan3rb2").checked) {
-                        pertanyaan3 = "Baik"
-                    } else if (document.getElementById("pertanyaan3rb3").checked) {
-                        pertanyaan3 = "Sedang"
-                    } else if (document.getElementById("pertanyaan3rb4").checked) {
-                        pertanyaan3 = "Jelek"
-                    }
-
-
-                    if (document.getElementById("pertanyaan4rb1").checked) {
-                        pertanyaan4 = "Komunikasi dan presentasi terutama penggunaan Bahasa Inggris"
-                    } else if (document.getElementById("pertanyaan4rb2").checked) {
-                        pertanyaan4 = "Komputer atau pemanfaatan IT secara umum"
-                    } else if (document.getElementById("pertanyaan4rb3").checked) {
-                        pertanyaan4 = "Numerik"
-                    } else if (document.getElementById("pertanyaan4rb4").checked) {
-                        pertanyaan4 = "Memimpin (leadership)"
-                    } else if (document.getElementById("pertanyaan4rb5").checked) {
-                        pertanyaan4 = "Mengembangkan pola kerja"
-                    } else if (document.getElementById("pertanyaan4rb6").checked) {
-                        pertanyaan4 = "Bekerjasama dalam tim"
-                    } else if (document.getElementById("pertanyaan4rb7").checked) {
-                        pertanyaan4 = "Lainnya, " + document.getElementById("lainnyapertanyaan4").value
-                    }
-
-
-                    if (document.getElementById("pertanyaan5rb1").checked) {
-                        pertanyaan5 = "Perlu, " + document.getElementById("perlupertanyaan5").value
-                    } else if (document.getElementById("pertanyaan5rb2").checked) {
-                        pertanyaan5 = "Tidak Perlu"
-                    }
-
+                    pertanyaan2 = "2021"
                 } else if (document.getElementById("pertanyaan2rb2").checked) {
-                    if (document.getElementById("pertanyaan2rb2p1").checked) {
-                        pertanyaan2 = "Tidak Ada, Tidak ada yang melamar"
-                    } else if (document.getElementById("pertanyaan2rb2p2").checked) {
-                        pertanyaan2 = "Tidak Ada, Kalah bersaing"
-                    } else if (document.getElementById("pertanyaan2rb2p3").checked) {
-                        pertanyaan2 = "Tidak Ada, " + document.getElementById("pertanyaan2rb2p3lain").value
-                    }
+                    pertanyaan2 = "2020"
+                }else if (document.getElementById("pertanyaan2rb3").checked) {
+                    pertanyaan2 = "2019"
+                }else if (document.getElementById("pertanyaan2rb4").checked) {
+                    pertanyaan2 = document.getElementById("pertanyaan2rb4yl").value
                 }
-
-
-
 
                 const data = {
                     nama: document.getElementById("nama").value,
@@ -323,16 +121,16 @@
                     no_telp: document.getElementById("no_telp").value,
                     no_fax: document.getElementById("no_fax").value,
                     email: document.getElementById("email").value,
-                    pertanyaan1: pertanyaan1,
+                    pertanyaan1: document.getElementById("pertanyaan1").value,
                     pertanyaan2: pertanyaan2,
-                    pertanyaan3: pertanyaan3,
-                    pertanyaan4: pertanyaan4,
-                    pertanyaan5: pertanyaan5,
-                    pertanyaan6: document.getElementById("pertanyaan6").value,
-                    pertanyaan7_1: document.getElementById("pertanyaan7_1").value,
-                    pertanyaan7_2: document.getElementById("pertanyaan7_2").value,
-                    pertanyaan7_3: document.getElementById("pertanyaan7_3").value,
-                    pertanyaan7_4: document.getElementById("pertanyaan7_4").value,
+                    pertanyaan3:  document.querySelector('input[name="pertanyaan3"]:checked').value,
+                    pertanyaan4:  document.querySelector('input[name="pertanyaan4"]:checked').value,
+                    pertanyaan5:  document.querySelector('input[name="pertanyaan5"]:checked').value,
+                    pertanyaan6:  document.querySelector('input[name="pertanyaan6"]:checked').value,
+                    pertanyaan7:  document.querySelector('input[name="pertanyaan7"]:checked').value,
+                    pertanyaan8:  document.querySelector('input[name="pertanyaan8"]:checked').value,
+                    pertanyaan9:  document.querySelector('input[name="pertanyaan9"]:checked').value,
+                    pertanyaan10:  document.querySelector('input[name="pertanyaan10"]:checked').value,
                     alumni_list: list_alumni,
                 }
 

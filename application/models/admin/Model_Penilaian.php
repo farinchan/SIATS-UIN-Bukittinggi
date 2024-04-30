@@ -6,7 +6,10 @@ class Model_Penilaian extends CI_Model {
     }
 
     public function getall_penilaian() {
-        $query = $this->db->get('penilaian_pengguna');
+        $this->db->select('*');
+        $this->db->from('penilaian_pengguna');        
+        // $this->db->order_by('created_at', 'ASC');
+        $query = $this->db->get();
         return $query->result();
     }
 
@@ -27,6 +30,7 @@ class Model_Penilaian extends CI_Model {
     public function insert_penilaian($data) {
         $this->db->insert('penilaian_pengguna', $data);
     }
+    
 
     public function update_penilaian($id, $data) {
         $this->db->where('id', $id);
