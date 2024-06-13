@@ -160,7 +160,8 @@
                                 <label for="p2">1. Dalam berapa bulan anda mendapatkan pekerjaan / Berapa bulan waktu untuk mendapatkan pekerjaan pertama ? </label>
                                 <select class="form-control" required name="p2" id="p2">
                                     <option value="" disabled selected>==Click for option==</option>
-                                    <option value="< 6 Bulan" <?= ($pekerjaan['p2'] == '< 6 Bulan') ? 'selected' : ''; ?>>< 6 Bulan</option>
+                                    <option value="< 6 Bulan" <?= ($pekerjaan['p2'] == '< 6 Bulan') ? 'selected' : ''; ?>>
+                                        < 6 Bulan</option>
                                     <option value="6 - 18 Bulan" <?= ($pekerjaan['p2'] == '6 - 18 Bulan') ? 'selected' : ''; ?>>6 - 18 Bulan</option>
                                     <option value="> 18 Bulan" <?= ($pekerjaan['p2'] == '> 18 Bulan') ? 'selected' : ''; ?>>> 18 Bulan</option>
                                 </select>
@@ -169,7 +170,8 @@
                                 <label for="p3">2. Berapa rata-rata penghasilan Anda per bulan ?</label>
                                 <select class="form-control" required name="p3" id="p3">
                                     <option value="" disabled selected>==Click for option==</option>
-                                    <option value="< Rp2.000.000,00" <?= ($pekerjaan['p3'] == '< Rp2.000.000,00') ? 'selected' : ''; ?>>< Rp2.000.000,00</option>
+                                    <option value="< Rp2.000.000,00" <?= ($pekerjaan['p3'] == '< Rp2.000.000,00') ? 'selected' : ''; ?>>
+                                        < Rp2.000.000,00</option>
                                     <option value="Rp2.000.000,00 - Rp5.000.000,00" <?= ($pekerjaan['p3'] == 'Rp2.000.000,00 - Rp5.000.000,00') ? 'selected' : ''; ?>>Rp2.000.000,00 - Rp5.000.000,00</option>
                                     <option value="> Rp5.000.000,00" <?= ($pekerjaan['p3'] == '> Rp5.000.000,00') ? 'selected' : ''; ?>>> Rp5.000.000,00</option>
                                 </select>
@@ -221,7 +223,8 @@
                                 <label for="p2">1. Dalam berapa bulan anda mendapatkan pekerjaan / Berapa bulan waktu untuk mendapatkan pekerjaan pertama ?</label>
                                 <select class="form-control" required name="p2" id="p2">
                                     <option value="" disabled selected>Pilih opsi</option>
-                                    <option value="< 6 Bulan">< 6 Bulan</option>
+                                    <option value="< 6 Bulan">
+                                        < 6 Bulan</option>
                                     <option value="6 - 18 Bulan">6 - 18 Bulan</option>
                                     <option value="> 18 Bulan">> 18 Bulan</option>
                                 </select>
@@ -230,7 +233,8 @@
                                 <label for="p3">2. Berapa rata-rata penghasilan Anda per bulan ?</label>
                                 <select class="form-control" required name="p3" id="p3">
                                     <option value="" disabled selected>Pilih opsi</option>
-                                    <option value="< Rp2.000.000,00">< Rp2.000.000,00</option>
+                                    <option value="< Rp2.000.000,00">
+                                        < Rp2.000.000,00</option>
                                     <option value="Rp2.000.000,00 - Rp5.000.000,00">Rp2.000.000,00 - Rp5.000.000,00</option>
                                     <option value="> Rp5.000.000,00">> Rp5.000.000,00</option>
                                 </select>

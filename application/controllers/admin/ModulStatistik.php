@@ -55,22 +55,46 @@ class ModulStatistik extends CI_Controller
 
     public function febi()
     {
-        // Your code for method2 goes here
+        $this->session->set_flashdata('location', "statistik ftik");
+
+        $data = array();
+
+
+        $this->load->view('admin/modulstatistik/content_febi.php', $data, TRUE);
+        $this->load->view('admin/modulstatistik/statistik.php', $data, FALSE);
     }
 
     public function fuad()
     {
-        // Your code for method2 goes here
+        $this->session->set_flashdata('location', "statistik ftik");
+
+        $data = array();
+
+
+        $this->load->view('admin/modulstatistik/content_fuad.php', $data, TRUE);
+        $this->load->view('admin/modulstatistik/statistik.php', $data, FALSE);
     }
 
     public function syariah()
     {
-        // Your code for method2 goes here
+        $this->session->set_flashdata('location', "statistik ftik");
+
+        $data = array();
+
+
+        $this->load->view('admin/modulstatistik/content_syariah.php', $data, TRUE);
+        $this->load->view('admin/modulstatistik/statistik.php', $data, FALSE);
     }
 
     public function pascasarjana()
     {
-        // Your code for method2 goes here
+        $this->session->set_flashdata('location', "statistik ftik");
+
+        $data = array();
+
+
+        $this->load->view('admin/modulstatistik/content_pascasarjana.php', $data, TRUE);
+        $this->load->view('admin/modulstatistik/statistik.php', $data, FALSE);
     }
 
     // Add more methods as needed
@@ -93,13 +117,52 @@ class ModulStatistik extends CI_Controller
         $tahun = "2";
 
         foreach ($valueCounts as $value => $count) {
-            if ($count > 1) {
+            if ($count > 0) {
                 $data = [
                     "tahun" => "20".$value,
                     "jumlah_alumni" => $count
                 ];
                 if ($tahun !== $value) {
                     $tracer = $this->Model_Alumni->alumni_tracer_filter($filter, $value);
+                    $data["jumlah_tracer"] = $tracer;
+                }
+                array_push($alumni_angkatan, $data);
+                $tahun = $value;
+            }
+        }
+        $data = [
+            "jumlah_alumni" => count($array_alumni),
+            "angakatan" => $alumni_angkatan
+
+        ];
+        echo json_encode($data, JSON_PRETTY_PRINT);
+    }
+
+    function grafikTracerAlumniPasca()
+    {
+        header('Content-Type: application/json');
+
+        $filter = $this->input->get('filter');
+
+        $alumni = $this->Model_Alumni->alumni_filter($filter);
+        $array_alumni = array();
+
+        foreach ($alumni as $x) {
+            array_push($array_alumni, substr($x->nisn, 3, 2));
+        }
+
+        $valueCounts = array_count_values($array_alumni);
+        $alumni_angkatan = [];
+        $tahun = "2";
+
+        foreach ($valueCounts as $value => $count) {
+            if ($count > 0) {
+                $data = [
+                    "tahun" => "20".$value,
+                    "jumlah_alumni" => $count
+                ];
+                if ($tahun !== $value) {
+                    $tracer = $this->Model_Alumni->alumni_tracer_filter2($filter, $value);
                     $data["jumlah_tracer"] = $tracer;
                 }
                 array_push($alumni_angkatan, $data);

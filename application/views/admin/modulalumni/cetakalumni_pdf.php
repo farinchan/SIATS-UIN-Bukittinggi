@@ -50,8 +50,8 @@
     <img src="<?= base_url("assets/report/header.png") ?>" class="img-fluid img-header" alt="...">
     <div class="container-t">
         <p class="text-center calibri mt-3">D A T A &ensp; T R A C E R &ensp; S T U D Y </p>
-        <p class="text-center calibri-bold">ALUMNI PROGRAM STUDI</p>
-        <p class="text-center calibri-bold">PENDIDIKAN TEKNIK INFORMATIKA DAN KOMPUTER</p>
+        <p class="text-center calibri-bold">ALUMNI</p>
+        <!-- <p class="text-center calibri-bold">PENDIDIKAN TEKNIK INFORMATIKA DAN KOMPUTER</p> -->
         <p class="text-center calibri">UNIVERSITAS ISLAM NEGERI SJECH M. DJAMIL DJAMBEK BUKITTINGGI</p>
         <br>
         <div class="grid-item">
@@ -145,247 +145,53 @@
                 </tr>
                 <tr>
                     <td style="width: 20px;">1. </td>
-                    <td>Apakah saudara/i sudah mendapatkan pekerjaan ?</td>
+                    <td>Jelaskan status Anda saat ini ?</td>
                 </tr>
                 <tr>
                     <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->mendapatkan_pekerjaan ?></b></td>
+                    <td><b><?= $tracer->p1 ?></b></td>
                 </tr>
                 <tr>
                     <td>2. </td>
-                    <td>Mohon dituliskan nama lembaga/instansi tempat saudara bekerja?</td>
+                    <td>Dalam berapa bulan anda mendapatkan pekerjaan / Berapa bulan waktu untuk mendapatkan pekerjaan pertama?</td>
                 </tr>
                 <tr>
                     <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->tempat_kerja ?></b></td>
+                    <td><b><?= $tracer->p2 ?></b></td>
                 </tr>
                 <tr>
                     <td>3. </td>
-                    <td>Dari mana saudara mendapatkan informasi tentang pekerjaan pertama yang saudara peroleh ?</td>
+                    <td>Berapa rata-rata penghasilan Anda per bulan?</td>
                 </tr>
                 <tr>
                     <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->sumber_informasi_pekerjaan ?></b></td>
+                    <td><b><?= $tracer->p3 ?></b></td>
                 </tr>
                 <tr>
                     <td>4. </td>
-                    <td>Mohon menuliskan nama lengkap atasan langsung anda dilokasi kerja</td>
+                    <td>Kategori tempat bekerja</td>
                 </tr>
                 <tr>
                     <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->nama_atasan ?></b></td>
+                    <td><b><?= $tracer->p4 ?></b></td>
                 </tr>
                 <tr>
                     <td>5. </td>
-                    <td>Setelah lulus, berapa lama saudara menunggu untuk mendapatkan pekerjaan pertama?</td>
+                    <td>Apa tingkat tempat kerja Anda?</td>
                 </tr>
                 <tr>
                     <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->lama_menganggur ?></b></td>
+                    <td><b><?= $tracer->p5 ?></b></td>
                 </tr>
                 <tr>
                     <td>6. </td>
-                    <td>Seberapa besat tingkat relevansi bidang kerja dengan latar belakang pendidikan anda</td>
+                    <td>Kesesuaian bidang kerja dengan kompetensi bidang studi yang ditamatkan?</td>
                 </tr>
                 <tr>
                     <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->relevansi_bidang_kerja ?></b></td>
+                    <td><b><?= $tracer->p6 ?></b></td>
                 </tr>
-                <tr>
-                    <td>7. </td>
-                    <td>Berapa gaji Saudara per bulan untuk pekerjaan pertama ??</td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->gaji_pertama_bekerja ?></b></td>
-                </tr>
-                <tr>
-                    <td>8. </td>
-                    <td>Permasalahan apa saja yang saudara hadapi dalam rangka memperoleh pekerjaan?</td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->permasalahan_pekerjaan ?></b></td>
-                </tr>
-                <tr>
-                    <td>9. </td>
-                    <td>Mohon dituliskan narasikan singkat terkait bidang kerja anda sekarang?</td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->narasi_bidang_kerja ?></b></td>
-                </tr>
-                <tr>
-                    <td>10. </td>
-                    <td>Berikan masukan saudara/i untuk peningkatan kualitas skill mahasiswa sesuai pengalaman anda bekerja saat ini!</td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->masukan_skill_mahasiswa     ?></b></td>
-                </tr>
-                <tr>
-                    <td>11. </td>
-                    <td>Berikan masukan saudara/i untuk peningkatan kualitas prodi PTIK ke depannya..?</td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"></td>
-                    <td><b><?= $tracer->masukan_prodi_ptik ?></b></td>
-                </tr>
-                <tr>
-                    <td>12. </td>
-                    <td>Berikan penilaian terhadap kondisi penyelenggaraan pendidikan dan pembelajaran pada program studi (kampus) Saudara. Diukur atas dasar kebutuhan di Sekolah</td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"></td>
-                    <td>1 = sangat rendah; 5 = sangat tinggi</td>
-                </tr>
-                <tr>
-                    <td style="width: 20px;"></td>
-                    <td>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th>
-                                    </th>
-                                    <td></td>
-                                    <td style="width: 30px;">1</td>
-                                    <td style="width: 30px;">2</td>
-                                    <td style="width: 30px;">3</td>
-                                    <td style="width: 30px;">4</td>
-                                    <td style="width: 30px;">5</td>
-
-                                </tr>
-                                <tr>
-                                    <td>a. </td>
-                                    <td>Kegiatan akademik secara umum</td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_a == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_a == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_a == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_a == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_a == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>b. </td>
-                                    <td>Isi mata kuliah</td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_b == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_b == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_b == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_b == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_b == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>c. </td>
-                                    <td>Kompetensi dosen</td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_c == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_c == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_c == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_c == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_c == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>d. </td>
-                                    <td>Pelayanan/bimbingan Dosen terhadap Mahasiswa</td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_d == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_d == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_d == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_d == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_d == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>e. </td>
-                                    <td>Isi mata kuliah teori</td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_e == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_e == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_e == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_e == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_e == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>f. </td>
-                                    <td>Isi mata kuliah praktek</td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_f == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_f == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_f == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_f == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_f == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>g. </td>
-                                    <td>Kualitas pembelajaran</td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_g == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_g == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_g == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_g == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_g == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>h. </td>
-                                    <td>Sistem penilaian</td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_h == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_h == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_h == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_h == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" disabled <?php echo $tracer->penilaian_h == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>i. </td>
-                                    <td>Kesempatan terlibat dalam proyek penelitian dosen</td>
-                                    <td><input type="radio" name="penilaian_i" value="1" <?php echo $tracer->penilaian_i == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_i" value="2" <?php echo $tracer->penilaian_i == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_i" value="3" <?php echo $tracer->penilaian_i == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_i" value="4" <?php echo $tracer->penilaian_i == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_i" value="5" <?php echo $tracer->penilaian_i == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>j. </td>
-                                    <td>Kualitas sarana dan prasarana akademik</td>
-                                    <td><input type="radio" name="penilaian_j" value="1" <?php echo $tracer->penilaian_j == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_j" value="2" <?php echo $tracer->penilaian_j == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_j" value="3" <?php echo $tracer->penilaian_j == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_j" value="4" <?php echo $tracer->penilaian_j == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_j" value="5" <?php echo $tracer->penilaian_j == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>k. </td>
-                                    <td>Kesempatan untuk memperoleh pengalaman kerja (praktek)</td>
-                                    <td><input type="radio" name="penilaian_k" value="1" <?php echo $tracer->penilaian_k == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_k" value="2" <?php echo $tracer->penilaian_k == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_k" value="3" <?php echo $tracer->penilaian_k == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_k" value="4" <?php echo $tracer->penilaian_k == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_k" value="5" <?php echo $tracer->penilaian_k == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>l. </td>
-                                    <td>Kesempatan ikut menentukan kebijakan yang berdampak terhadap kebijakan institut</td>
-                                    <td><input type="radio" name="penilaian_l" value="1" <?php echo $tracer->penilaian_l == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_l" value="2" <?php echo $tracer->penilaian_l == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_l" value="3" <?php echo $tracer->penilaian_l == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_l" value="4" <?php echo $tracer->penilaian_l == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_l" value="5" <?php echo $tracer->penilaian_l == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>m. </td>
-                                    <td>Suasana akademik</td>
-                                    <td><input type="radio" name="penilaian_m" value="1" <?php echo $tracer->penilaian_m == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_m" value="2" <?php echo $tracer->penilaian_m == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_m" value="3" <?php echo $tracer->penilaian_m == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_m" value="4" <?php echo $tracer->penilaian_m == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_m" value="5" <?php echo $tracer->penilaian_m == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-                                <tr>
-                                    <td>n. </td>
-                                    <td>Fasilitas dan kumpulan buku pada perpustakaan</td>
-                                    <td><input type="radio" name="penilaian_n" value="1" <?php echo $tracer->penilaian_n == '1' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_n" value="2" <?php echo $tracer->penilaian_n == '2' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_n" value="3" <?php echo $tracer->penilaian_n == '3' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_n" value="4" <?php echo $tracer->penilaian_n == '4' ? 'checked' : ""; ?>></td>
-                                    <td><input type="radio" name="penilaian_n" value="5" <?php echo $tracer->penilaian_n == '5' ? 'checked' : ""; ?>></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
+                
             </table>
         <?php } else { ?>
             <table>

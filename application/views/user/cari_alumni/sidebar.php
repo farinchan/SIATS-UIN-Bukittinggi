@@ -30,7 +30,7 @@
                         <?php foreach ($kategori_donasi as $x): ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="<?php echo base_url('main/kategoridonasi/'.$x->id_kategoridonasi) ?>" id="populer"><?php echo $x->nama_kategoridonasi; ?></a>                                              
-                            <span class="badge bg-primary rounded-pill"><?php echo $x->jumlah; ?>  </span>
+                            <span class="badge bg-primary rounded-pill"><?php echo "" ?>  </span>
                         </li>
                         <?php endforeach; ?>
                     </ul>

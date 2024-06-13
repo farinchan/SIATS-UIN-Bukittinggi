@@ -21,6 +21,7 @@ class Main extends CI_Controller
         $this->load->model('admin/Model_Setting');
         $this->load->model('admin/Model_Dashboard');
         $this->load->model('admin/Model_Notifikasi');
+        $this->load->model('user/Model_statistik');
 
 
         //tambahan riwayat pekerjaan dan pendidikan
@@ -36,6 +37,140 @@ class Main extends CI_Controller
         $this->load->view('user/partisi/navbar.php', $data, TRUE);
         $this->load->view('user/partisi/head.php', $data, TRUE);
         $this->load->view('user/register/syarat_ketentuan.php', $data, TRUE);
+    }
+
+    function statistik()
+    {
+        $data = [
+            "jenjang" => $this->Model_statistik->getDistinctJenjang(),
+            "fakultas" => $this->Model_statistik->getDistincFakultas(),
+            "prodi" => $this->Model_statistik->getProdi(),
+            "tahun_lulus" => $this->Model_statistik->getTahunLulus(),
+        ];
+
+        // var_dump($data);
+
+        $this->session->set_flashdata('location', "statistik");
+        $this->load->view('user/statistik/content.php', $data, TRUE);
+        $this->load->view('user/statistik/statistik.php');
+    }
+
+    function  statAjax()
+    {
+        header('Content-Type: application/json');
+        $get_tahun_dari = (int)$this->input->get('tahun_dari');
+        $get_tahun_sampai = (int)$this->input->get('tahun_sampai');
+        $get_jenjang = $this->input->get('jenjang');
+        $get_fakultas = $this->input->get('fakultas');
+        $get_prodi = $this->input->get('prodi');
+
+        $alumniData = $this->Model_statistik->countAlumni($get_tahun_dari, $get_tahun_sampai, $get_jenjang, $get_fakultas, $get_prodi);
+        $totalAlumniCount = 0;
+        $result = [];
+        if ($get_fakultas == "0") {
+            $totalAlumniPerFakultas = [];
+            // Proses data alumni untuk menghitung total per fakultas
+            foreach ($alumniData as $alumni) {
+                $fakultas = $alumni['fakultas'];
+                $jumlahAlumni = (int)$alumni['jumlah_alumni'];
+                $totalAlumniCount = $totalAlumniCount +  $jumlahAlumni;
+
+                // Tambahkan jumlah alumni ke fakultas yang sesuai
+                if (isset($totalAlumniPerFakultas[$fakultas])) {
+                    $totalAlumniPerFakultas[$fakultas] += $jumlahAlumni;
+                } else {
+                    $totalAlumniPerFakultas[$fakultas] = $jumlahAlumni;
+                }
+            }
+
+            // Ubah hasil perhitungan menjadi format yang diminta
+
+            foreach ($totalAlumniPerFakultas as $fakultas => $jumlahAlumni) {
+                $result[] = [
+                    "nama" => $fakultas,
+                    "jumlah_alumni" => (string)$jumlahAlumni // konversi ke string
+                ];
+            }
+        } else {
+            $result = $alumniData;
+            $totalAlumniCount = $this->Model_statistik->countAlumniNum($get_tahun_dari, $get_tahun_sampai, $get_jenjang, $get_fakultas, $get_prodi);
+        }
+
+        $tracer = $this->Model_statistik->countTracer($get_tahun_dari, $get_tahun_sampai, $get_jenjang, $get_fakultas, $get_prodi);
+        $dataTracer = [];
+        $totalTracerCount = 0;
+
+        // foreach ($tracer as $x) {
+
+        //     $p1 = $x['p1'];
+        //     $jumlah = 1;
+        //     $totalTracerCount = $totalTracerCount +  $jumlah;
+
+        //     // Tambahkan jumlah alumni ke p1 yang sesuai
+        //     if (isset($tracerP1[$p1])) {
+        //         $tracerP1[$p1] += $jumlah;
+        //     } else {
+        //         $tracerP1[$p1] = $jumlah;
+        //     }
+        // }
+
+        //  foreach ($tracerP1 as $p1 => $jumlah) {
+        //     $dataTracer[] = [
+        //         "nama" => $p1,
+        //         "jumlah_alumni" => (string)$jumlah // konversi ke string
+        //     ];
+        // }
+
+        // Looping untuk setiap kolom
+        $columns = array('p1', 'p2', 'p3', 'p4', 'p5', 'p6');
+        foreach ($columns as $column) {
+            // Array untuk menyimpan nilai unik dan jumlahnya
+            $unique_values = array();
+
+            // Looping untuk setiap baris data
+            foreach ($tracer as $row) {
+                // Mendapatkan nilai kolom saat ini
+                $value = $row[$column];
+
+                // Jika nilai tidak null
+                if (!is_null($value)) {
+                    // Jika nilai belum ada dalam array unique_values, tambahkan
+                    if (!array_key_exists($value, $unique_values)) {
+                        $unique_values[$value] = 1;
+                    } else {
+                        // Jika sudah ada, tambahkan jumlahnya
+                        $unique_values[$value]++;
+                    }
+                }
+            }
+
+            // Format hasil perhitungan untuk kolom saat ini
+            $column_result = array();
+            foreach ($unique_values as $value => $count) {
+                $column_result[] = array(
+                    'value' => $value,
+                    'jumlah' => $count
+                );
+            }
+
+            // Menyimpan hasil perhitungan untuk kolom saat ini ke dalam hasil akhir
+            $dataTracer[$column] = $column_result;
+        }
+
+        $data = [
+            "info" => [
+                "dari_tahun" => $get_tahun_dari,
+                "sampai_tahun" => $get_tahun_sampai,
+                "jenjang" => $get_jenjang,
+                "fakultas" => $get_fakultas,
+                "prodi" => $get_prodi
+            ],
+            "total_data_alumni" => $totalAlumniCount,
+            "data_alumni" => $result,
+            "data_tracer" => $dataTracer
+        ];
+
+        echo json_encode($data, JSON_PRETTY_PRINT);
     }
 
 
@@ -111,7 +246,7 @@ class Main extends CI_Controller
             cekDataTracerAlumni();
 
             $data = [
-                "alumni" => $this->Model_Alumni->getAlumniAktif(0, 0),
+                "alumni" => $this->Model_Alumni->getAlumniAktif(0, 0, 0),
                 "lulus" => $this->Model_register->get_tahunlulus()->result()
             ];
 
@@ -130,7 +265,7 @@ class Main extends CI_Controller
 
             header('Content-Type: application/json');
 
-            $result = $this->Model_Alumni->getAlumniAktif(0, 0);
+            $result = $this->Model_Alumni->getAlumniAktif(0, 0, 0);
             $tahun_lulus = $this->Model_register->get_tahunlulus()->result();
 
             $filter = $this->input->get('filter');
@@ -210,7 +345,7 @@ class Main extends CI_Controller
                 $response = [];
 
                 foreach ($result as $row) {
-                    if ($row->latitude != -6.200000 && $row->longitude != 106.816666 ) {
+                    if ($row->latitude != -6.200000 && $row->longitude != 106.816666) {
 
                         $data = null;
                         $data['type'] = "Feature";
@@ -970,6 +1105,7 @@ class Main extends CI_Controller
                 'content' => $this->load->view('user/alumni_berita/list_berita.php', $data, TRUE)
             );
 
+            
             $this->load->view('user/alumni_berita/alumni_berita.php', $content, FALSE);
         } else {
 
@@ -1785,6 +1921,12 @@ class Main extends CI_Controller
                 'content' => $this->load->view('user/berita/bacaberita.php', $data, TRUE)
             );
 
+            $meta = array(
+                "title" => $data['kontenberita'][0]->judul_berita,
+                "description" => substr(strip_tags($data['kontenberita'][0]->isi_berita), 0, 200) . "...",
+            );
+
+            $this->load->view('user/berita/berita.php', $meta, TRUE);
             $this->load->view('user/berita/infobacaberita.php', $data, TRUE);
             $this->load->view('user/berita/berita.php', $content, FALSE);
         } else {
@@ -1980,7 +2122,13 @@ class Main extends CI_Controller
             $content = array(
                 'content' => $this->load->view('user/berita_admin/kontenberita.php', $data, TRUE)
             );
+            $meta = [
+                'title' => $data['kontenberita'][0]->judul_berita,
+                'description' => $data['kontenberita'][0]->isi_berita,
+                // 'keywords' => $data['kategori_berita'][0]->nama_kategoriberita,
+            ];
 
+            $this->load->view('user/berita_admin/beritaadmin.php', $meta, TRUE);
             $this->load->view('user/berita/infobacaberita.php', $data, TRUE);
             $this->load->view('user/berita_admin/beritaadmin.php', $content, FALSE);
         } else {

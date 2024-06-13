@@ -28,8 +28,8 @@
                   <div class="col-md-4">
                     <div class="btn-group mb-3" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-default">Import</button>
-                      <a href="<?php echo base_url('admin/ModulAlumni/exportalumni') ?>" type="button" class="btn btn-secondary btn-sm">Export</a>
-                      <a target="_blank" id="tombolcetaklaporan" type="button" class="btn btn-secondary btn-sm">Cetak Laporan</a>
+                      <a href="<?php echo base_url('admin/ModulAlumni/exporttracer') ?>" type="button" class="btn btn-secondary btn-sm">Export</a>
+                      <!-- <a target="_blank" id="tombolcetaklaporan" type="button" class="btn btn-secondary btn-sm">Cetak Laporan</a> -->
                     </div>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                                 <td><?php echo $row->nama_alumni; ?></td>
                                 <td><?php echo $row->p1; ?></td>
                                 <td>
-                                        <a href="<?php echo base_url('admin/modulalumni/tracer_detail/'.$row->nisn); ?>" class="btn btn-primary btn-sm">
+                                        <a href="<?php echo base_url('admin/ModulAlumni/cetakalumni/'.$row->nisn); ?>" target="_blank" class="btn btn-primary btn-sm">
                                             <i class="fa fa-print"></i> Cetak Tracer
                                         </a>
                                 </td>

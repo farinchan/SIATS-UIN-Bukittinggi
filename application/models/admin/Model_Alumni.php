@@ -154,7 +154,7 @@ class Model_Alumni extends CI_Model{
         $this->db->select("alumni.nisn");
         $this->db->from('alumni');
         $this->db->where('status_akun', "Y");
-        $this->db->where("SUBSTRING(alumni.nisn, 1, 2) = $kode_prodi");
+        $this->db->where("kode_prodi" , "$kode_prodi");
         // $this->db->where("SUBSTRING(alumni.nisn, 3, 2) = '20'");
         return $this->db->get()->result();
     }
@@ -163,6 +163,14 @@ class Model_Alumni extends CI_Model{
         $this->db->from('tracer_univ');
         $this->db->where("SUBSTRING(tracer_univ.nisn, 1, 2) = $kode_prodi");
         $this->db->where("SUBSTRING(tracer_univ.nisn, 3, 2) = $angkatan");
+        return $this->db->get()->num_rows();
+    }
+
+    public function alumni_tracer_filter2($kode_prodi, $angkatan){
+        $this->db->select("tracer_univ.nisn");
+        $this->db->from('tracer_univ');
+        $this->db->where("SUBSTRING(tracer_univ.nisn, 1, 3) = $kode_prodi");
+        $this->db->where("SUBSTRING(tracer_univ.nisn, 4, 2) = $angkatan");
         return $this->db->get()->num_rows();
     }
 

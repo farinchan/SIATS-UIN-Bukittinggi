@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Statistik Tracer Study Fakultas Syariah</h1>
+          <h1 class="m-0">Statistik Tracer Study Pascasarjana</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
             <!-- BAR CHART -->
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title">Statisitik tracer study program studi S1 Hukum Keluarga Islam (Ahwal Syakhshiyyah)</h3>
+                <h3 class="card-title">Statisitik tracer study program studi S2 Hukum Islam</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -38,7 +38,7 @@
               </div>
               <div class="card-body">
                 <div class="chart">
-                  <canvas id="barChart11" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  <canvas id="barChart101" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
               </div>
               <!-- /.card-body -->
@@ -53,7 +53,7 @@
             <!-- BAR CHART -->
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title">Statisitik tracer study program studi S1 Hukum Ekonomi Syariah (Muamalah)</h3>
+                <h3 class="card-title">Statisitik tracer study program studi S2 Manajemen Pendidikan Islam</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -66,7 +66,7 @@
               </div>
               <div class="card-body">
                 <div class="chart">
-                  <canvas id="barChart12" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  <canvas id="barChart102" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
               </div>
               <!-- /.card-body -->
@@ -81,7 +81,7 @@
             <!-- BAR CHART -->
             <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title">Statisitik tracer study program studi S1 Hukum Tatanegara (siyasah)</h3>
+                <h3 class="card-title">Statisitik tracer study program studi S3 Ilmu Syariah</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -94,7 +94,7 @@
               </div>
               <div class="card-body">
                 <div class="chart">
-                  <canvas id="barChart13" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  <canvas id="barChart103" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
               </div>
               <!-- /.card-body -->
@@ -103,36 +103,6 @@
           </div>
           <!-- /.col -->
         </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <!-- BAR CHART -->
-            <div class="card card-success">
-              <div class="card-header">
-                <h3 class="card-title">Statisitik tracer study program studi S1 Hukum Pidana Islam (Jinayah)</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="chart">
-                  <canvas id="barChart14" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                </div>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-
-        
 
       </div>
     </div>

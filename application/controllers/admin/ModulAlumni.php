@@ -160,11 +160,11 @@ class ModulAlumni extends CI_Controller
 
 
         // echo json_encode($tracer);
-        
+
         $list = $this->Model_Alumni->getlistalumni($tracer, $lulus, $prodi);
         $data = array();
         $no = $_POST['start'];
-        
+
         foreach ($list as $x) {
 
             $no++;
@@ -200,7 +200,6 @@ class ModulAlumni extends CI_Controller
         );
 
         echo json_encode($output);
-       
     }
 
     function cetakalumni()
@@ -293,7 +292,7 @@ class ModulAlumni extends CI_Controller
                 'prodi' => $this->Model_Setting->getprodi(),
 
             );
-            
+
 
             $content = array(
                 'content' => $this->load->view('admin/modulalumni/lihatalumni.php', $data, TRUE),
@@ -442,7 +441,7 @@ class ModulAlumni extends CI_Controller
                 'instagram' => $this->input->post('instagram'),
                 'twitter' => $this->input->post('twitter'),
                 'kode_prodi' => $this->input->post('kode_prodi'),
-                
+
             );
 
             $this->Model_register->input_alumni_baru($data);
@@ -742,7 +741,7 @@ class ModulAlumni extends CI_Controller
             $row[] = $x->nisn;
             $row[] = $x->nama_alumni;
             $row[] = $x->nama;
-            $row[] = $x->jenjang;   
+            $row[] = $x->jenjang;
             $row[] = $x->tahun_lulus;
             if ($x->status_alumni == "pelajar") {
                 $row[] = "Pelajar";
@@ -851,7 +850,7 @@ class ModulAlumni extends CI_Controller
                         'p4' => $sheetData[$i]['5'],
                         'p5' => $sheetData[$i]['6'],
                         'p6' => $sheetData[$i]['7'],
-    
+
                     );
                     $this->Model_Alumni->input_tracer($data);
                 }
@@ -864,7 +863,7 @@ class ModulAlumni extends CI_Controller
         }
     }
 
-    
+
 
 
     //import data alumni
@@ -891,26 +890,29 @@ class ModulAlumni extends CI_Controller
             $sheetData = $spreadsheet->getActiveSheet()->toArray();
 
             for ($i = 1; $i < count($sheetData); $i++) {
+                // if (substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 0, 2) !== "25" ||  substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 2, 2) !== "13" ||  substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 2, 2) !== "17") {
+                if (substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 0, 2) !== "25") {
 
-                $data = array(
+                    $data = array(
 
-                    'nisn' => preg_replace('/\s+/', '', $sheetData[$i]['1']),
-                    'nama_alumni' => $sheetData[$i]['2'],
-                    'tahun_lulus' => $sheetData[$i]['3'],
-                    'status_alumni' => $sheetData[$i]['4'],
-                    'detail_status' => $sheetData[$i]['5'],
-                    'no_wa' => $sheetData[$i]['6'],
-                    'detail_alamat' => $sheetData[$i]['7'],
-                    'email' => $sheetData[$i]['8'],
-                    'password' => password_hash(preg_replace('/\s+/', '', $sheetData[$i]['9']), PASSWORD_DEFAULT),
-                    'kode_prodi' => $sheetData[$i]['10'],
-                    'waktu_join' => date('Y-m-d H:i:s'),
-                    'status_akun' => 'Y'
+                        'nisn' => preg_replace('/\s+/', '', $sheetData[$i]['1']),
+                        'nama_alumni' => $sheetData[$i]['2'],
+                        'tahun_lulus' => $sheetData[$i]['3'],
+                        'status_alumni' => $sheetData[$i]['4'],
+                        'detail_status' => $sheetData[$i]['5'],
+                        'no_wa' => $sheetData[$i]['6'],
+                        'detail_alamat' => $sheetData[$i]['7'],
+                        'email' => $sheetData[$i]['8'],
+                        'password' => password_hash(preg_replace('/\s+/', '', $sheetData[$i]['9']), PASSWORD_DEFAULT),
+                        'kode_prodi' => $sheetData[$i]['10'],
+                        'waktu_join' => date('Y-m-d H:i:s'),
+                        'status_akun' => 'Y'
 
-                );
+                    );
 
-                $this->Model_register->input_alumni_baru($data);
-                $this->Model_user->insertloglogin($sheetData[$i]['1']);
+                    $this->Model_register->input_alumni_baru($data);
+                    $this->Model_user->insertloglogin($sheetData[$i]['1']);
+                }
             }
 
             echo json_encode('Berhasil Import Data');
@@ -928,7 +930,19 @@ class ModulAlumni extends CI_Controller
             'data' => $this->Model_Alumni->getAlumniRes()
         );
 
+
         $this->load->view('admin/export/alumni', $data, false);
+    }
+
+    //export Tracer
+    public function exporttracer()
+    {
+
+        $data = array(
+            'data' => $this->Model_Alumni->getTracerAll()->result()
+        );
+
+        $this->load->view('admin/export/tracer', $data, false);
     }
 
 
