@@ -55,13 +55,15 @@
                 <li><a class="nav-link scrollto" href="<?php echo base_url('main/gisalumni'); ?>">Persebaran Alumni</a></li>
             <?php } ?>
             
-            <?php if ($this->session->flashdata('location') == "statistik") { ?>
-                <li><a class="nav-link scrollto active" href="<?php echo base_url('main/statitik'); ?>">Statistik</a></li>
-            <?php } else { ?>
-                <li><a class="nav-link scrollto" href="<?php echo base_url('main/statistik'); ?>">Statistik</a></li>
-            <?php } ?>
 
-            <li class="dropdown active"><a href="#"><span>Forum</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="nav-link dropdown <?= $this->session->flashdata('location') == "statistik" ? "active" : "" ?>  "><a href="#"><span>Statistik</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a href="<?php echo base_url('main/statistik'); ?>">Statistik Alumni</a></li>
+                    <li><a href="<?php echo base_url('main/statitikpengguna'); ?>">Statistik Pengguna</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-link dropdown"><a href="#"><span>Forum</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                     <li><a href="<?php echo base_url('main/diskusi') ?>">Semua Topik</a></li>
                     <li><a href="<?php echo base_url('main/buattopik'); ?>">Buat Topik Baru</a></li>

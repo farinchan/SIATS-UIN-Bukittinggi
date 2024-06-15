@@ -144,14 +144,47 @@
 
                     <div class="card-body pt-0">
                         <div class="dropdown-divider"></div>
-                        <div class="row mt-2">
-                            <div class="col-md-4">
+                        <div class="row mt-2 mb-4">
+                            <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header text-center">
                                         <b><small>Berapa bulan waktu untuk mendapatkan pekerjaan pertama</small></b>
                                     </div>
                                     <div class="card-body">
-                                        <div id="chartMendapatKerja"></div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                            <div id="chartMendapatKerja"></div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="live-preview">
+                                                    <div class="table-responsive">
+                                                        <table class="table align-middle table-nowrap mb-0">
+                                                            <thead class="table-light">
+                                                                <tr>
+                                                                    <th scope="col"></th>
+                                                                    <th scope="col">Jumlah</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="tabel_mendapat_kerja">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <b><small>Kategori tempat bekerja</small></b>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="chartKategori"></div>
                                         <div class="live-preview">
                                             <div class="table-responsive">
                                                 <table class="table align-middle table-nowrap mb-0">
@@ -161,15 +194,16 @@
                                                             <th scope="col">Jumlah</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="tabel_mendapat_kerja">
+                                                    <tbody id="tabel_kategori">
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
+                            </div> -->
+                        </div>
+                        <div class="row mt-2">
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-header text-center">
@@ -195,34 +229,6 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header text-center">
-                                        <b><small>Kategori tempat bekerja</small></b>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="chartKategori"></div>
-                                        <div class="live-preview">
-                                            <div class="table-responsive">
-                                                <table class="table align-middle table-nowrap mb-0">
-                                                    <thead class="table-light">
-                                                        <tr>
-                                                            <th scope="col"></th>
-                                                            <th scope="col">Jumlah</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tabel_kategori">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-2"></div>
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-header text-center">
@@ -273,7 +279,6 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-2"></div>
 
                         </div>
                     </div>

@@ -8,6 +8,13 @@ class Model_statistik extends CI_Model
         $this->load->database();
     }
 
+    public function getPenggunaAll()
+    {
+        $this->db->select('*');
+        $query = $this->db->from('penilaian_pengguna');
+        return $query->get()->result_array();
+    }
+
     function getProdi()
     {
         return $this->db->get('prodi')->result();

@@ -239,6 +239,7 @@
 
             var pieOptions = {
                 series: [],
+                colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8 ', '#FFD700', '#FF6347', '#FF8C00', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500', '#FFD700', '#FF4500', '#FF1493', '#FF00FF', '#FF69B4', '#FFB6C1', '#FFA07A', '#FFA500'],
                 chart: {
                     height: 380,
                     type: 'pie',
@@ -351,11 +352,35 @@
 
                         // End - Pertanyaan 1 - Status Pekerjaan
 
+                        var p2Result = [];
+                        p2Result.push(response.data_tracer.p2.filter(function(item) {
+                            return item.value == "1 Bulan";
+                        })[0]);
+                        p2Result.push(response.data_tracer.p2.filter(function(item) {
+                            return item.value == "2 Bulan";
+                        })[0]);
+                        p2Result.push(response.data_tracer.p2.filter(function(item) {
+                            return item.value == "3 Bulan";
+                        })[0]);
+                        p2Result.push(response.data_tracer.p2.filter(function(item) {
+                            return item.value == "4 Bulan";
+                        })[0]);
+                        p2Result.push(response.data_tracer.p2.filter(function(item) {
+                            return item.value == "5 Bulan";
+                        })[0]);
+                        p2Result.push(response.data_tracer.p2.filter(function(item) {
+                            return item.value == "6 - 18 Bulan";
+                        })[0]);
+                        p2Result.push(response.data_tracer.p2.filter(function(item) {
+                            return item.value == "> 18 Bulan";
+                        })[0]);
+                        console.log(p2Result);
+
                         // Start - Pertanyaan 2 - Mendapat Pekerjaan
                         let datap2 = []
                         let categoriesp2 = []
-                        response.data_tracer.p2.forEach(element => {
-                            if (element.value == "1" || element.value == "2" || element.value == "3" || element.value == "4" || element.value == "5" || element.value == "6" ||  element.value == "6 - 18 Bulan" || element.value == "> 18 Bulan") {
+                        p2Result.forEach(element => {
+                            if (element.value == "1 Bulan" || element.value == "2 Bulan" || element.value == "3 Bulan" || element.value == "4 Bulan" || element.value == "5 Bulan" || element.value == "6 Bulan" || element.value == "6 - 18 Bulan" || element.value == "> 18 Bulan") {
                                 datap2.push(element.jumlah);
                                 categoriesp2.push(element.value);
                             }
@@ -371,7 +396,10 @@
 
                         chartMendapatKerja.updateOptions({
                             series: datap2,
-                            labels: categoriesp2
+                            labels: categoriesp2,
+                            legend: {
+                                position: 'right'
+                            }
                         });
                         // End - Pertanyaan 2 - Mendapat Pekerjaan
 
@@ -401,26 +429,26 @@
                         // End - Pertanyaan 3 - Penghasilan Pekerjaan
 
                         // Start - Pertanyaan 4 - Kategori Pekerjaan
-                        let datap4 = []
-                        let categoriesp4 = []
-                        response.data_tracer.p4.forEach(element => {
-                            if (element.value == "Institusi/Organisasi Multilateral" || element.value == "Lembaga Pemerintah/BUMN/BUMD" || element.value == "Perusahaan Swasta" || element.value == "Wirausaha") {
-                                datap4.push(element.jumlah);
-                                categoriesp4.push(element.value);
-                            }
-                        });
+                        // let datap4 = []
+                        // let categoriesp4 = []
+                        // response.data_tracer.p4.forEach(element => {
+                        //     if (element.value == "Institusi/Organisasi Multilateral" || element.value == "Lembaga Pemerintah/BUMN/BUMD" || element.value == "Perusahaan Swasta" || element.value == "Wirausaha") {
+                        //         datap4.push(element.jumlah);
+                        //         categoriesp4.push(element.value);
+                        //     }
+                        // });
 
-                        document.getElementById("tabel_kategori").innerHTML = categoriesp4.map(function(item, i) {
-                            return `<tr>
-                                <td>${item}</td>
-                                <td>${datap4[i]}</td>
-                            </tr>`;
-                        }).join('')
+                        // document.getElementById("tabel_kategori").innerHTML = categoriesp4.map(function(item, i) {
+                        //     return `<tr>
+                        //         <td>${item}</td>
+                        //         <td>${datap4[i]}</td>
+                        //     </tr>`;
+                        // }).join('')
 
-                        chartKategori.updateOptions({
-                            series: datap4,
-                            labels: categoriesp4
-                        });
+                        // chartKategori.updateOptions({
+                        //     series: datap4,
+                        //     labels: categoriesp4
+                        // });
                         // End - Pertanyaan 4 - Kategori Pekerjaan
 
                         // Start - Pertanyaan 5 - Tingkat Tempat Kerja

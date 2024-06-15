@@ -1,4 +1,7 @@
 <?php
+
+use FontLib\Table\Type\head;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 class Main extends CI_Controller
 {
@@ -53,6 +56,68 @@ class Main extends CI_Controller
         $this->session->set_flashdata('location', "statistik");
         $this->load->view('user/statistik/content.php', $data, TRUE);
         $this->load->view('user/statistik/statistik.php');
+    }
+
+    function statitikpengguna()
+    {
+
+        // var_dump($data);
+
+        $this->session->set_flashdata('location', "statistik");
+        $this->load->view('user/statistik/stat_pengguna.php');
+    }
+
+    function StatPengguna()
+    {
+        header('Content-Type: application/json');
+        $penggunaData = $this->Model_statistik->getPenggunaAll();
+        // Looping untuk setiap kolom
+        $columns = array('pertanyaan3', 'pertanyaan4',  'pertanyaan5', 'pertanyaan6', 'pertanyaan7', 'pertanyaan8', 'pertanyaan9', 'pertanyaan10');
+        foreach ($columns as $column) {
+            // Array untuk menyimpan nilai unik dan jumlahnya
+            $unique_values = array();
+
+            // Looping untuk setiap baris data
+            foreach ($penggunaData as $row) {
+                // Mendapatkan nilai kolom saat ini
+                $value = $row[$column];
+
+                // Jika nilai tidak null
+                if (!is_null($value)) {
+                    // Jika nilai belum ada dalam array unique_values, tambahkan
+                    if (!array_key_exists($value, $unique_values)) {
+                        $unique_values[$value] = 1;
+                    } else {
+                        // Jika sudah ada, tambahkan jumlahnya
+                        $unique_values[$value]++;
+                    }
+                }
+            }
+
+            // Format hasil perhitungan untuk kolom saat ini
+            $column_result = array();
+            foreach ($unique_values as $value => $count) {
+                if ($column !== "pertanyaan3") {
+                    if ($value == 1) {
+                        $value = "1 - Kurang";
+                    } else if ($value == 2) {
+                        $value = "2 - Cukup";
+                    } else if ($value == 3) {
+                        $value = "3 - Baik";
+                    } else if ($value == 4) {
+                        $value = "4 - Sangat Baik";
+                    }
+                }
+                $column_result[] = array(
+                    'value' => $value,
+                    'jumlah' => $count
+                );
+            }
+
+            // Menyimpan hasil perhitungan untuk kolom saat ini ke dalam hasil akhir
+            $dataTracer[$column] = $column_result;
+        }
+        echo json_encode($dataTracer, JSON_PRETTY_PRINT);
     }
 
     function  statAjax()
@@ -1105,7 +1170,7 @@ class Main extends CI_Controller
                 'content' => $this->load->view('user/alumni_berita/list_berita.php', $data, TRUE)
             );
 
-            
+
             $this->load->view('user/alumni_berita/alumni_berita.php', $content, FALSE);
         } else {
 
