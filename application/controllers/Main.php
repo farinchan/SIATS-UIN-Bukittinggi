@@ -42,12 +42,21 @@ class Main extends CI_Controller
         $this->load->view('user/register/syarat_ketentuan.php', $data, TRUE);
     }
 
+    function getProdiList() {
+        header('Content-Type: application/json');
+        $jenjang = $this->input->get('jenjang');
+        $fakultas = $this->input->get('fakultas');
+        $data = [
+            "prodi" => $this->Model_statistik->getProdi($jenjang, $fakultas),
+        ];
+        echo json_encode($data, JSON_PRETTY_PRINT);
+    }
+
     function statistik()
     {
         $data = [
             "jenjang" => $this->Model_statistik->getDistinctJenjang(),
             "fakultas" => $this->Model_statistik->getDistincFakultas(),
-            "prodi" => $this->Model_statistik->getProdi(),
             "tahun_lulus" => $this->Model_statistik->getTahunLulus(),
         ];
 
@@ -1399,6 +1408,8 @@ class Main extends CI_Controller
 
         echo json_encode($output);
     }
+
+
 
     public function filteralumni()
     {

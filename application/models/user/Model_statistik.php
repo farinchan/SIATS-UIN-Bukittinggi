@@ -15,8 +15,15 @@ class Model_statistik extends CI_Model
         return $query->get()->result_array();
     }
 
-    function getProdi()
+    function getProdi($jenjang, $fakultas)
     {
+        $query = $this->db->select("*");
+        if ($jenjang != "0") {
+            $this->db->where('jenjang', $jenjang);
+        }
+        if ($fakultas != "0") {
+            $this->db->where('fakultas', $fakultas);
+        }
         return $this->db->get('prodi')->result();
     }
     public function getDistinctJenjang()
@@ -55,12 +62,17 @@ class Model_statistik extends CI_Model
 
         $this->db->where('alumni.tahun_lulus >=', $tahun_dari);
         $this->db->where('alumni.tahun_lulus <=', $tahun_sampai);
+        
 
         if ($jenjang != "0") {
             $this->db->where('prodi.jenjang', $jenjang);
         }
         if ($fakultas != "0") {
             $this->db->where('prodi.fakultas', $fakultas);
+        }
+
+        if ($prodi != "0") {
+            $this->db->where('prodi.kode', $prodi);
         }
 
         $query = $this->db->get();
@@ -91,6 +103,10 @@ class Model_statistik extends CI_Model
             $this->db->where('prodi.fakultas', $fakultas);
         }
 
+        if ($prodi != "0") {
+            $this->db->where('prodi.kode', $prodi);
+        }
+
         return $this->db->get()->num_rows();
     }
 
@@ -109,6 +125,10 @@ class Model_statistik extends CI_Model
         }
         if ($fakultas !== "0") {
             $this->db->where('prodi.fakultas', $fakultas);
+        }
+
+        if ($prodi !== "0") {
+            $this->db->where('prodi.kode', $prodi);
         }
 
 

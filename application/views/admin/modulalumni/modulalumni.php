@@ -101,12 +101,23 @@
         var isi_tracer = document.getElementById("isi_tracer");
         var tahun_lulus = document.getElementById("tahun_lulus");
         var kode_prodi = document.getElementById("kode_prodi");
+        var nama_alumni = document.getElementById("nama_alumni");
 
         var tracer = 0;
         var lulus = 0;
         var prodi = 0;
+        var nama = 0;
 
         var tombolcetaklaporan = document.getElementById("tombolcetaklaporan");
+
+        if (nama_alumni !== null) {
+            nama_alumni.addEventListener('input', function() {
+                console.log("nama = " +  nama_alumni.value);
+                nama = nama_alumni.value
+                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi + "&nama=" + nama
+                UpdateListAlumni()
+            });
+        }
 
         if (isi_tracer !== null) {
             isi_tracer.addEventListener('change', function() {
@@ -116,8 +127,7 @@
                 } else {
                     tracer = 0
                 }
-                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi
-                console.log("Tombol = " + tombolcetaklaporan.href);
+                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi + "&nama=" + nama
                 UpdateListAlumni()
             });
         }
@@ -131,7 +141,7 @@
                 } else {
                     lulus = tahun_lulus.value
                 }
-                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus+ "&prodi=" + prodi
+                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi + "&nama=" + nama
                 UpdateListAlumni()
             });
         }
@@ -144,7 +154,7 @@
                 } else {
                     prodi = kode_prodi.value
                 }
-                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus+ "&prodi=" + prodi
+                tombolcetaklaporan.href = "<?php echo base_url('admin/ModulAlumni/cetaklaporan?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi + "&nama=" + nama
                 UpdateListAlumni()
             });
         }
@@ -153,7 +163,7 @@
 
 
         function UpdateListAlumni() {
-            console.log("<?php echo base_url('admin/ModulAlumni/listalumni?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi);
+            console.log("<?php echo base_url('admin/ModulAlumni/listalumni?tracer=') ?>" + tracer + "&lulus=" + lulus + "&prodi=" + prodi + "&nama=" + nama);
             $('#list_alumni').DataTable().destroy();
             var table_list_alumni = $('#list_alumni').DataTable({
                 searching: false,
@@ -162,7 +172,7 @@
                 "responsive": true,
                 "order": [],
                 "ajax": {
-                    'url': '<?php echo base_url('admin/ModulAlumni/listalumni?tracer=') ?>' + tracer + "&lulus=" + lulus + "&prodi=" + prodi,
+                    'url': '<?php echo base_url('admin/ModulAlumni/listalumni?tracer=') ?>' + tracer + "&lulus=" + lulus + "&prodi=" + prodi + "&nama=" + nama,
                     'type': 'POST'
                 },
                 "columnDefs": [{

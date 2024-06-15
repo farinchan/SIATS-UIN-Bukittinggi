@@ -27,45 +27,47 @@
               <div class="card-body">
 
                 <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="colFormLabel" class="col-sm-2 col-form-label">Nama</label>
+                      <input type="text" class="form-control" id="nama_alumni" placeholder="Nama Alumni">
+                    </div>
+                  </div>
 
-                  <div class="col-md-4 mr-5">
-                    <div class="form-group row">
+                  <div class="col-md-4 ">
+                    <div class="form-group">
                       <label for="colFormLabel" class="col-sm-2 col-form-label">Prodi</label>
-                      <div class="col-sm-10">
-                        <select id="kode_prodi" class="form-control">
-                          <option selected>Semua</option>
-                          <?php foreach ($prodi as $p) { ?>
-                            <option value="<?= $p->kode ?>"><?= $p->jenjang ?> - <?= $p->nama ?></option>
-                          <?php } ?>
-                        </select>
-                      </div>
+                      <select id="kode_prodi" class="form-control">
+                        <option selected>Semua</option>
+                        <?php foreach ($prodi as $p) { ?>
+                          <option value="<?= $p->kode ?>"><?= $p->jenjang ?> - <?= $p->nama ?></option>
+                        <?php } ?>
+                      </select>
                     </div>
                   </div>
 
-                  <div class="col-md-4 mr-5">
-                    <div class="form-group row">
+                  <div class="col-md-4">
+                    <div class="form-group">
                       <label for="colFormLabel" class="col-sm-2 col-form-label">Kelulusan</label>
-                      <div class="col-sm-10">
-                        <select id="tahun_lulus" class="form-control">
-                          <option selected>Semua</option>
-                          <?php foreach ($tahun_lulus as $tahun) { ?>
-                            <option><?= $tahun->tahun_lulus ?></option>
-                          <?php } ?>
-                        </select>
-                      </div>
+                      <select id="tahun_lulus" class="form-control">
+                        <option selected>Semua</option>
+                        <?php foreach ($tahun_lulus as $tahun) { ?>
+                          <option><?= $tahun->tahun_lulus ?></option>
+                        <?php } ?>
+                      </select>
                     </div>
                   </div>
-
-                  <div class="col-md-3">
-                    <div class="form-check mt-2">
+                  
+                  <div class="col-md-4">
+                    <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="isi_tracer">
                       <label class="form-check-label text-bold" for="autoSizingCheck2">
                         Sudah Mengisi Tracer
                       </label>
                     </div>
                   </div>
-
                 </div>
+
                 <div class="row">
                   <div class="col-md-4">
                     <div class="btn-group mb-3" role="group" aria-label="Basic example">

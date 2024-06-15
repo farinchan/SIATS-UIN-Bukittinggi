@@ -157,11 +157,13 @@ class ModulAlumni extends CI_Controller
         $tracer = (int)$this->input->get('tracer');
         $lulus = (int)$this->input->get('lulus');
         $prodi = (int)$this->input->get('prodi');
+        $nama = $this->input->get('nama');
 
 
         // echo json_encode($tracer);
 
-        $list = $this->Model_Alumni->getlistalumni($tracer, $lulus, $prodi);
+        $list = $this->Model_Alumni->getlistalumni($tracer, $lulus, $prodi, $nama);
+        // echo json_encode($list);
         $data = array();
         $no = $_POST['start'];
 
@@ -174,13 +176,7 @@ class ModulAlumni extends CI_Controller
             $row[] = $x->nama;
             $row[] = $x->jenjang;
             $row[] = $x->tahun_lulus;
-            if ($x->status_alumni == "pelajar") {
-                $row[] = "Pelajar";
-            } else if ($x->status_alumni == "bekerja") {
-                $row[] = "Bekerja";
-            } else {
-                $row[] = " - ";
-            }
+            $row[] = $x->p1;
             $row[] = $x->detail_status;
             $row[] = '<center><a href="' . base_url('admin/ModulAlumni/lihat/' . $x->nisn) . '"><span class="badge badge-primary">Lihat</span></a>
             <a href="' . base_url('admin/ModulAlumni/cetakalumni/' . $x->nisn) . '" target="_blank"><span class="badge badge-success">Cetak Data</span></a>
@@ -193,10 +189,10 @@ class ModulAlumni extends CI_Controller
 
             'draw' => $_POST['draw'],
             'recordsTotal' => $this->Model_Alumni->count_all_alumni(),
-            'recordsFiltered' => $this->Model_Alumni->count_filtered_alumni($tracer, $lulus, $prodi),
+            'recordsFiltered' => $this->Model_Alumni->count_filtered_alumni($tracer, $lulus, $prodi, $nama),
             'data' => $data,
             'search' => $_POST['search']['value']
-
+            
         );
 
         echo json_encode($output);

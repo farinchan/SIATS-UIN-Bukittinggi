@@ -71,11 +71,9 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1"><b>Program Studi</b></label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option selected>-Semua-</option>
-                                        <!-- <?php foreach ($prodi as $prodi) : ?>
-                                                <option><?php echo $prodi->nama; ?></option>
-                                            <?php endforeach; ?> -->
+                                    <select class="form-control" id="prodiSelect">
+                                        <option value="0" selected>-Semua-</option>
+                                        
                                     </select>
                                 </div>
                             </div>

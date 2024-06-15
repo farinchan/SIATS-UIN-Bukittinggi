@@ -159,8 +159,9 @@
         $(document).ready(function() {
             const tahunDariSelect = document.getElementById('tahunDariSelect');
             const tahunSampaiSelect = document.getElementById('tahunSampaiSelect');
-            const tahunlulusSelect = document.getElementById('fakultasSelect');
+            const fakultasSelect = document.getElementById('fakultasSelect');
             const jenjangSelect = document.getElementById('jenjangSelect');
+            const prodiSelect = document.getElementById('prodiSelect');
 
             var options = {
                 series: [{
@@ -295,7 +296,7 @@
                         'tahun_sampai': tahunSampaiSelect.value,
                         'jenjang': jenjangSelect.value,
                         'fakultas': fakultasSelect.value,
-                        'prodi': 0
+                        'prodi': prodiSelect.value
                     },
                     success: function(response) {
 
@@ -512,6 +513,29 @@
 
             }
 
+            var pilJenjang = "0";
+             var pilFakultas = "0";
+
+            function UpdateProdi() {
+                $.ajax({
+                url: '<?php echo base_url('main/getProdiList'); ?>' + '?fakultas=' + pilFakultas + '&jenjang=' + pilJenjang,
+                type: 'GET',
+                success: function(response) {
+                    console.log("Data Prodi : " + response);
+                    prodiSelect.innerHTML = '<option value="0" selected >Semua Prodi</option>';
+                    prodiSelect.innerHTML += response.prodi.map(function(item) {
+                        return `<option value="${item.kode}"> ${item.jenjang} - ${item.nama}</option>`;
+                    }).join('');
+                },
+                error: function(xhr, status, error) {
+                    // Handle the error here
+                    console.log("Data Prodi Error : " + error.message);
+                }
+            });
+            }
+
+           
+
             tahunDariSelect.addEventListener('change', function() {
                 updateDataAlumni()
             });
@@ -521,12 +545,21 @@
             });
 
             fakultasSelect.addEventListener('change', function() {
+                pilFakultas = fakultasSelect.value;
+                UpdateProdi();
                 updateDataAlumni()
             });
 
             jenjangSelect.addEventListener('change', function() {
+                pilJenjang = jenjangSelect.value;
+                UpdateProdi();
                 updateDataAlumni()
             });
+
+            prodiSelect.addEventListener('change', function() {
+                updateDataAlumni()
+            });
+            
 
         });
     </script>

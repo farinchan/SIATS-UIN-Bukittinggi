@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <ol>
                 <li><a href="<?php echo base_url('main'); ?>">Home</a></li>
-                <li>Statistik Alumni</li>
+                <li>Statistik Pengguna</li>
             </ol>
             <?php $this->load->view('user/partisi/cariberita.php') ?>
         </div>
