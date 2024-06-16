@@ -887,7 +887,7 @@ class ModulAlumni extends CI_Controller
 
             for ($i = 1; $i < count($sheetData); $i++) {
                 // if (substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 0, 2) !== "25" ||  substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 2, 2) !== "13" ||  substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 2, 2) !== "17") {
-                if (substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 0, 2) !== "25") {
+                // if (substr(preg_replace('/\s+/', '', $sheetData[$i]['1']), 0, 2) !== "25") {
 
                     $data = array(
 
@@ -908,7 +908,7 @@ class ModulAlumni extends CI_Controller
 
                     $this->Model_register->input_alumni_baru($data);
                     $this->Model_user->insertloglogin($sheetData[$i]['1']);
-                }
+                // }
             }
 
             echo json_encode('Berhasil Import Data');
